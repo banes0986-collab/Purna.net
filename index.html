@@ -3,32 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PurnaHub | Özel</title>
+    <title>Purna.net | Özel</title>
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
-        #login-box { text-align: center; }
+        body { 
+            margin: 0; 
+            background: #000; 
+            color: #fff; 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+        }
+        #login-box { text-align: center; background: #1a1a1a; padding: 30px; border-radius: 20px; }
         #content { display: none; width: 90%; max-width: 500px; padding: 20px; background: #1a1a1a; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        img { width: 100%; border-radius: 15px; }
-        input { padding: 10px; border-radius: 5px; border: none; }
-        button { padding: 10px 20px; background: #e50914; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        img { width: 100%; border-radius: 15px; display: block; }
+        input { padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; width: 200px; }
+        button { padding: 10px 20px; background: #e50914; color: #fff; border: none; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto; }
     </style>
 </head>
 <body>
 
     <div id="login-box">
-        <h2>Purna.net Özel Giriş</h2>
+        <h2>Purna.net Giriş</h2>
         <input type="password" id="pass" placeholder="Şifreni gir...">
         <button onclick="checkPassword()">Giriş Yap</button>
     </div>
 
     <div id="content">
-        <img src="1000451762.webp" alt="Özel Fotoğraf">
+        <img src="IMG_5588.webp" alt="Özel Fotoğraf">
         <p style="text-align:center;">Özel Proje v1.0</p>
     </div>
 
     <script>
         function checkPassword() {
-            // Buraya kendi şifreni yaz (Örn: 1234)
+            // Şifreni buradan değiştirebilirsin
             var password = document.getElementById("pass").value;
             if (password == "1234") { 
                 document.getElementById("login-box").style.display = "none";
