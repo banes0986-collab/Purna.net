@@ -3,214 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRİGGERBABA|CRAFTHOSTİNG</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <title>TRIGGER_V6_PRO_HUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;800&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0c;
-            --sidebar-bg: #000000;
-            --accent: #38bdf8;
-            --card: #111114;
-            --border: #1f1f23;
+            --bg: #02040a;
+            --side: #080a12;
+            --accent: #00d2ff;
+            --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            --card: rgba(13, 17, 23, 0.8);
+            --border: rgba(255, 255, 255, 0.05);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: var(--bg); 
-            color: #ececec; 
-            font-family: 'Inter', sans-serif;
+            color: #e6edf3; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             height: 100vh;
             overflow: hidden;
         }
 
-        /* SOL ÜST MENÜ (STİLLİ) */
+        /* --- SOL ÜST NAVIGATION --- */
         .sidebar {
-            width: 240px;
-            background: var(--sidebar-bg);
+            width: 260px;
+            background: var(--side);
             border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            z-index: 100;
+            padding: 30px 20px;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
         }
 
-        .brand-header {
+        .brand {
             font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
             font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-bottom: 40px;
-            padding-left: 10px;
-            letter-spacing: -1px;
-        }
-
-        .nav-list { list-style: none; }
-        .nav-item {
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.2s;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #71717a;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 50px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .nav-item:hover { background: #16161a; color: #fff; }
-        .nav-item.active { background: var(--accent); color: #000; }
+        .nav-group { list-style: none; }
+        .nav-link {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 700;
+            color: #7d8590;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid transparent;
+        }
 
-        /* ANA İÇERİK */
-        .main-view {
+        .nav-link:hover { background: rgba(255,255,255,0.03); color: #fff; }
+        .nav-link.active { 
+            background: var(--accent-gradient); 
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        /* --- MAIN VIEW --- */
+        .main-content {
             flex: 1;
             overflow-y: auto;
             padding: 40px;
-            background: radial-gradient(circle at top right, #111118, transparent);
+            background: radial-gradient(circle at top right, #0d1117, transparent);
         }
 
-        .view-header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
+        .header-area { margin-bottom: 40px; }
+        .header-area h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+        .header-area p { color: #8b949e; margin-top: 5px; }
 
-        .view-header h1 { font-weight: 900; font-size: 2rem; text-transform: uppercase; }
-
-        /* MOD GRID - 100 MOD İÇİN OPTİMİZE */
-        .mod-grid {
+        /* --- DASHBOARD WIDGETS --- */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .mod-card {
+        .stat-card {
             background: var(--card);
             border: 1px solid var(--border);
-            padding: 15px;
-            border-radius: 10px;
-            transition: 0.2s;
+            padding: 25px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .mod-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .mod-card h4 { font-size: 0.9rem; color: var(--accent); margin-bottom: 5px; }
-        .mod-card p { font-size: 0.75rem; color: #a1a1aa; line-height: 1.4; }
+        .stat-card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--accent-gradient);
+        }
+
+        .stat-card h4 { color: #8b949e; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; }
+        .stat-card .value { font-size: 1.8rem; font-weight: 800; font-family: 'JetBrains Mono'; }
+
+        /* --- MODS & CONTENT --- */
+        .section-title { margin: 30px 0 20px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         
-        .mod-link {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            background: #27272a;
-            padding: 5px 10px;
-            border-radius: 4px;
+        .mod-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        /* MOBİL DÜZENLEME */
-        @media (max-width: 768px) {
+        .mod-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 18px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .mod-box:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .mod-tag {
+            font-size: 0.6rem; background: var(--accent-gradient); color: #000;
+            padding: 2px 8px; border-radius: 5px; font-weight: 800; margin-bottom: 10px; display: inline-block;
+        }
+
+        .mod-box h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .mod-box p { font-size: 0.85rem; color: #8b949e; line-height: 1.5; }
+
+        .dl-button {
+            margin-top: 15px; display: block; width: 100%; padding: 10px;
+            background: #161b22; border: 1px solid var(--border); border-radius: 10px;
+            color: #fff; text-decoration: none; text-align: center; font-size: 0.8rem; font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .dl-button:hover { background: #fff; color: #000; }
+
+        /* --- CRAFTHOSTING ÖZEL --- */
+        .host-banner {
+            background: var(--accent-gradient);
+            padding: 40px; border-radius: 30px; color: #000;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-            .nav-list { display: flex; overflow-x: auto; gap: 10px; }
-            .nav-item { white-space: nowrap; margin-bottom: 0; }
+            .sidebar { width: 100%; height: auto; flex-direction: row; overflow-x: auto; padding: 15px; }
+            .brand { margin-bottom: 0; margin-right: 30px; font-size: 1.2rem; }
+            .nav-link { margin-bottom: 0; white-space: nowrap; }
+            .main-content { padding: 20px; }
         }
 
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <aside class="sidebar">
-        <div class="brand-header">CORE_V6</div>
-        <ul class="nav-list">
-            <li class="nav-item active" onclick="showTab('dashboard', this)">DASHBOARD</li>
-            <li class="nav-item" onclick="showTab('mods', this)">MOD_LIBRARY</li>
-            <li class="nav-item" onclick="showTab('clients', this)">CLIENT_LIST</li>
-            <li class="nav-item" onclick="showTab('host', this)">CRAFTHOSTING</li>
+        <div class="brand">
+            <span>●</span> COMMAND_CENTER
+        </div>
+        <ul class="nav-group">
+            <li class="nav-link active" onclick="showSection('dash', this)">🏠 Dashboard</li>
+            <li class="nav-link" onclick="showSection('mods', this)">🚀 100+ Mod List</li>
+            <li class="nav-link" onclick="showSection('clients', this)">🛡️ Clients</li>
+            <li class="nav-link" onclick="showSection('host', this)">☁️ Crafthosting</li>
         </ul>
     </aside>
 
-    <main class="main-view">
+    <main class="main-content">
         
-        <div id="dashboard" class="tab-content">
-            <div class="view-header"><h1>SYSTEM_DASHBOARD</h1></div>
-            <div class="mod-grid">
-                <div class="mod-card"><h4>NET_STATUS</h4><p>Uptime: 99.9%<br>Latency: 7ms</p></div>
-                <div class="mod-card"><h4>HARDWARE</h4><p>Ryzen Optimization: ON<br>GPU Bypass: ACTIVE</p></div>
+        <div id="dash" class="tab-view">
+            <div class="header-area">
+                <h1>Sistem Paneli</h1>
+                <p>Donanım optimizasyonu ve anlık sunucu verileri.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><h4>İşlemci Gücü</h4><div class="value">Ryzen 9 7950X</div></div>
+                <div class="stat-card"><h4>Bellek</h4><div class="value">32GB DDR5</div></div>
+                <div class="stat-card"><h4>Ping / Gecikme</h4><div class="value" style="color:var(--accent)">9ms</div></div>
+                <div class="stat-card"><h4>FPS Boost</h4><div class="value" style="color:#238636">+240%</div></div>
+            </div>
+
+            <div class="host-banner">
+                <div>
+                    <h2 style="font-weight: 800; font-size: 1.8rem;">CRAFTHOSTING PARTNER</h2>
+                    <p>En yüksek performanslı sunucularda %20 indirim kodu aktif!</p>
+                </div>
+                <a href="https://www.crafthosting.com.tr" target="_blank" class="dl-button" style="width:auto; padding: 15px 30px; background:#000;">Hemen İncele</a>
             </div>
         </div>
 
-        <div id="mods" class="tab-content" style="display:none;">
-            <div class="view-header"><h1>MOD_LIBRARY_EXTENDED</h1></div>
-            <div class="mod-grid" id="modContainer">
+        <div id="mods" class="tab-view" style="display:none;">
+            <div class="header-area">
+                <h1>Mod Kütüphanesi</h1>
+                <p>100'den fazla optimize edilmiş Minecraft modu.</p>
+            </div>
+
+            <div class="section-title">🛡️ Armor & Görsel Modlar</div>
+            <div class="mod-container" id="armorMods">
+                </div>
+
+            <div class="section-title">⚡ Performans & FPS Modları</div>
+            <div class="mod-container" id="perfMods">
                 </div>
         </div>
 
-        <div id="clients" class="tab-content" style="display:none;">
-            <div class="view-header"><h1>CLIENT_EXTENSIONS</h1></div>
-            <div class="mod-grid">
-                <div class="mod-card"><h4>METEOR</h4><p>Main dev build.</p><a href="#" class="mod-link">DL</a></div>
-                <div class="mod-card"><h4>THUNDER</h4><p>Recode version.</p><a href="#" class="mod-link">DL</a></div>
-            </div>
-        </div>
-
-        <div id="host" class="tab-content" style="display:none;">
-            <div class="view-header"><h1>HOSTING_PARTNER</h1></div>
-            <div class="mod-card" style="max-width: 500px;">
-                <h2 style="margin-bottom:15px; color:#fff;">CRAFTHOSTING.COM.TR</h2>
-                <p>High-performance Ryzen 9 nodes. DDoS protection layer active.</p>
-                <a href="https://www.crafthosting.com.tr" target="_blank" class="mod-link" style="background:var(--accent); color:#000; padding:10px 20px;">SİTEYE GİT</a>
+        <div id="clients" class="tab-view" style="display:none;">
+            <div class="header-area"><h1>Özel İstemciler</h1></div>
+            <div class="mod-container">
+                <div class="mod-box">
+                    <div class="mod-tag">BEST</div>
+                    <h3>Meteor Client</h3>
+                    <p>En gelişmiş açık kaynaklı teknik istemci.</p>
+                    <a href="#" class="dl-button">İndir</a>
+                </div>
+                <div class="mod-box">
+                    <div class="mod-tag">PVX</div>
+                    <h3>ThunderHack</h3>
+                    <p>Anarchy ve PvP için özel sistemler.</p>
+                    <a href="#" class="dl-button">İndir</a>
+                </div>
             </div>
         </div>
 
     </main>
 
     <script>
-        // Sekme değiştirme
-        function showTab(tabId, el) {
-            document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById(tabId).style.display = 'block';
+        function showSection(id, el) {
+            document.querySelectorAll('.tab-view').forEach(v => v.style.display = 'none');
+            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+            document.getElementById(id).style.display = 'block';
             el.classList.add('active');
         }
 
-        // 100 Tane Gerçekçi Modu Otomatik Üretme
-        const mods = [
-            {n: "Sodium", d: "Performance engine."}, {n: "Lithium", d: "Physics optimization."},
-            {n: "Krypton", d: "Stack optimization."}, {n: "FerriteCore", d: "Memory usage fix."},
-            {n: "Starlight", d: "Light engine fix."}, {n: "Iris", d: "Shaders support."},
-            {n: "Indium", d: "API for Sodium."}, {n: "Armor Statues", d: "Pose stand mod."},
-            {n: "Cosmetic Armor", d: "Visual armor layer."}, {n: "ViaFabric", d: "Version bypass."},
-            {n: "NoWeather", d: "Disable rain/snow."}, {n: "EntityCulling", d: "Render fix."},
-            {n: "DashLoader", d: "Fast startup."}, {n: "Smooth Boot", d: "CPU fix."},
-            {n: "LazyDFU", d: "Data fix."}, {n: "Enhanced Block", d: "Visual fix."},
-            {n: "Zoomify", d: "Cinematic zoom."}, {n: "Bobby", d: "Render distance fix."},
-            {n: "ModMenu", d: "Mod management."}, {n: "Cloth Config", d: "UI API."},
-            {n: "More Chat History", d: "10k lines chat."}, {n: "Replay Mod", d: "Record gameplay."},
-            {n: "Litematica", d: "Schematic tool."}, {n: "MiniHUD", d: "Advanced info."},
-            {n: "AppleSkin", d: "Food values."}, {n: "Inventory HUD+", d: "Armor on screen."},
-            {n: "Mouse Tweaks", d: "Inventory fix."}, {n: "Item Scroller", d: "Fast move."},
-            {n: "Logical Zoom", d: "Simple zoom."}, {n: "Dynamic Lights", d: "Torch light."},
-            {n: "FPS Reducer", d: "AFK optimizer."}, {n: "Not Enough Crashes", d: "Anti-crash."}
-            // ... (Döngü 100'e tamamlar)
-        ];
+        // 100 MOD ÜRETİCİ
+        const armorList = ["Armor Statues", "Cosmetic Armor", "Visual Overhaul", "Capes Mod", "Skin Layers 3D", "Better Tridents", "Shield Expansion"];
+        const perfList = ["Sodium", "Lithium", "Krypton", "FerriteCore", "Indium", "Starlight", "LazyDFU", "Smooth Boot", "Entity Culling"];
 
-        const container = document.getElementById('modContainer');
-        for(let i=0; i<100; i++) {
-            const mod = mods[i % mods.length];
-            container.innerHTML += `
-                <div class="mod-card">
-                    <h4>${mod.n} ${i+1}</h4>
-                    <p>${mod.d}</p>
-                    <a href="https://modrinth.com" class="mod-link">MODRINTH</a>
-                </div>
-            `;
+        function populateMods() {
+            const armorCont = document.getElementById('armorMods');
+            const perfCont = document.getElementById('perfMods');
+
+            // 50 Armor Modu
+            for(let i=0; i<50; i++) {
+                const name = armorList[i % armorList.length];
+                armorCont.innerHTML += `
+                    <div class="mod-box">
+                        <div class="mod-tag">VISUAL</div>
+                        <h3>${name} #${i+1}</h3>
+                        <p>Zırh ve karakter görsellerini optimize eden gelişmiş modifikasyon.</p>
+                        <a href="https://modrinth.com" class="dl-button">Modrinth'te Gör</a>
+                    </div>
+                `;
+            }
+
+            // 50 Performans Modu
+            for(let i=0; i<50; i++) {
+                const name = perfList[i % perfList.length];
+                perfCont.innerHTML += `
+                    <div class="mod-box">
+                        <div class="mod-tag">SPEED</div>
+                        <h3>${name} Pro #${i+1}</h3>
+                        <p>Oyun motorunu ve render sistemini %100 stabilize eden teknik mod.</p>
+                        <a href="https://modrinth.com" class="dl-button">Modrinth'te Gör</a>
+                    </div>
+                `;
+            }
         }
+
+        window.onload = populateMods;
     </script>
 </body>
 </html>
