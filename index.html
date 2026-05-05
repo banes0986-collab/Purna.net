@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIGGER MEGA HUB | ELITE EDITION</title>
+    <title>TRIGGER MEGA HUB | ULTIMATE EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -53,21 +53,21 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; margin-bottom: 20px; letter-spacing: -1px; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 2.2rem; margin-bottom: 20px; letter-spacing: -1px; }
         .accent { color: var(--primary); }
 
         /* Kartlar */
         .glass-card {
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-            padding: 25px; border-radius: 20px; margin-bottom: 15px;
+            padding: 20px; border-radius: 20px; margin-bottom: 12px;
             display: flex; justify-content: space-between; align-items: center;
             transition: 0.3s;
         }
         .glass-card:hover { background: rgba(255,255,255,0.06); border-color: var(--primary); transform: translateX(10px); }
 
         .btn-action {
-            padding: 10px 25px; background: white; color: black;
-            text-decoration: none; border-radius: 10px; font-weight: 800; transition: 0.3s;
+            padding: 8px 20px; background: white; color: black;
+            text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 0.8rem; transition: 0.3s;
         }
         .btn-action:hover { box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
 
@@ -77,10 +77,9 @@
             background: rgba(0, 210, 255, 0.05); border: 1px solid var(--primary);
             padding: 20px; border-radius: 20px; text-align: center;
         }
-        .plan-card h4 { font-size: 1.5rem; margin-bottom: 10px; }
-        .plan-card .price { font-size: 1.8rem; font-weight: 900; color: var(--primary); }
+        .plan-card h4 { font-size: 1.2rem; margin-bottom: 10px; }
+        .plan-card .price { font-size: 1.5rem; font-weight: 900; color: var(--primary); }
 
-        /* Scrollbar */
         .content::-webkit-scrollbar { width: 5px; }
         .content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
     </style>
@@ -93,72 +92,78 @@
     <div class="sidebar">
         <div class="nav-item active" onclick="openTab('home', this)">🏠 <span>DASHBOARD</span></div>
         <div class="nav-item" onclick="openTab('hacks', this)">⚔️ <span>HACK CLIENTS</span></div>
-        <div class="nav-item" onclick="openTab('mods', this)">🚀 <span>FPS MODS</span></div>
+        <div class="nav-item" onclick="openTab('mods', this)">🚀 <span>FPS & PVP MODS</span></div>
         <div class="nav-item" onclick="openTab('hosting', this)">☁️ <span>HOSTING</span></div>
     </div>
 
     <div class="content">
-        
         <div id="home" class="tab-content active">
-            <h1>SYSTEM <span class="accent">STATUS</span></h1>
-            <div class="glass-card">
+            <h1>TRIGGER <span class="accent">CORE</span></h1>
+            <div class="glass-card" style="border-left: 4px solid var(--primary);">
                 <div>
-                    <h3>Hoş geldin, Trigger</h3>
-                    <p>Tüm sistemler optimize edildi. Bugün hangi sunucuyu domine edeceksin?</p>
+                    <h3>Sistem Durumu: Optimal</h3>
+                    <p>Tüm modlar ve hileler 2026 güncel sürümleriyle yüklendi.</p>
                 </div>
                 <div style="text-align: right;">
                     <span style="color: var(--success); font-weight: 900;">ONLINE</span><br>
-                    <small id="pingDisplay">Ping: 14ms</small>
+                    <small id="pingDisplay">Ping: 12ms</small>
                 </div>
             </div>
-            <div class="glass-card" style="border-left: 4px solid var(--accent);">
-                <div>
-                    <h3>Hızlı Duyuru</h3>
-                    <p>Yeni Doomsday bypass metodu eklendi. Kontrol etmeyi unutma!</p>
-                </div>
+            <div class="glass-card">
+                <div><h3>Aktif Görev</h3><p>CraftHosting sunucularında performans testi bekleniyor.</p></div>
             </div>
         </div>
 
         <div id="hacks" class="tab-content">
             <h1>HACK <span class="accent">ELITE</span></h1>
             <div class="glass-card">
-                <div><h3>METEOR CLIENT</h3><p>En modern ve modüler hile deneyimi.</p></div>
+                <div><h3>DOOMSDAY CLIENT</h3><p>Profesyonel bypass ve modül desteği.</p></div>
+                <a href="https://doomsdayclient.com/" target="_blank" class="btn-action">İNDİR</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>THUNDERHACK RECODE</h3><p>Anarchy dünyasının kralı.</p></div>
+                <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" target="_blank" class="btn-action">İNDİR</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>METEOR CLIENT</h3><p>Modern, stabil ve tamamen özelleştirilebilir.</p></div>
                 <a href="https://meteorclient.com/" target="_blank" class="btn-action">İNDİR</a>
             </div>
             <div class="glass-card">
-                <div><h3>THUNDERHACK</h3><p>Anarchy sunucuları için en sert vuruşlar.</p></div>
-                <a href="https://github.com/ThunderHack-Recode/ThunderHack-Recode" target="_blank" class="btn-action">İNDİR</a>
-            </div>
-            <div class="glass-card">
-                <div><h3>CATLEAN</h3><p>Optimize edilmiş gizli hile arayüzü.</p></div>
-                <a href="#" class="btn-action">ERİŞİM</a>
+                <div><h3>WURST CLIENT</h3><p>Her sürümde çalışan efsanevi hile seti.</p></div>
+                <a href="https://www.wurstclient.net/download/" target="_blank" class="btn-action">İNDİR</a>
             </div>
         </div>
 
         <div id="mods" class="tab-content">
-            <h1>ULTIMATE <span class="accent">BOOST</span></h1>
+            <h1>MODRINTH <span class="accent">BOOST</span></h1>
             <div class="glass-card">
-                <div><h3>LITHIUM</h3><p>Oyun içi mantık ve fizik optimizasyonu (Hız kazandırır).</p></div>
-                <a href="https://modrinth.com/mod/lithium" target="_blank" class="btn-action">GET</a>
-            </div>
-            <div class="glass-card">
-                <div><h3>SODIUM</h3><p>Motor seviyesinde grafik optimizasyonu.</p></div>
+                <div><h3>SODIUM + IRIS</h3><p>Grafik motoru optimizasyonu ve shader desteği.</p></div>
                 <a href="https://modrinth.com/mod/sodium" target="_blank" class="btn-action">GET</a>
             </div>
             <div class="glass-card">
-                <div><h3>STarlight</h3><p>Işıklandırma motorunu tamamen baştan yazar.</p></div>
+                <div><h3>LITHIUM</h3><p>Oyun içi fizik ve tick optimizasyonu (Server seviyesi hız).</p></div>
+                <a href="https://modrinth.com/mod/lithium" target="_blank" class="btn-action">GET</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>STARLIGHT</h3><p>Işık hesaplamalarını %100 hızlandırır.</p></div>
                 <a href="https://modrinth.com/mod/starlight" target="_blank" class="btn-action">GET</a>
             </div>
             <div class="glass-card">
-                <div><h3>FERRITECORE</h3><p>RAM kullanımını %50'ye kadar azaltır.</p></div>
+                <div><h3>FERRITECORE</h3><p>Bellek (RAM) kullanımını minimize eder.</p></div>
                 <a href="https://modrinth.com/mod/ferritecore" target="_blank" class="btn-action">GET</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>KRYPTON</h3><p>İnternet paketlerini optimize ederek pingi düşürür.</p></div>
+                <a href="https://modrinth.com/mod/krypton" target="_blank" class="btn-action">GET</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>ENTITY CULLING</h3><p>Görünmeyen yaratıkları render etmez (FPS Artışı).</p></div>
+                <a href="https://modrinth.com/mod/entityculling" target="_blank" class="btn-action">GET</a>
             </div>
         </div>
 
         <div id="hosting" class="tab-content">
-            <h1>CRAFTHOSTING <span class="accent">PRO</span></h1>
-            <p>Türkiye'nin en kaliteli sunucu sağlayıcısını ziyaret et.</p>
-            
+            <h1>CRAFTHOSTING <span class="accent">ELITE</span></h1>
             <div class="plan-grid">
                 <div class="plan-card">
                     <h4>STARTER</h4>
@@ -166,7 +171,7 @@
                     <p><small>4GB RAM / Ryzen 9</small></p>
                 </div>
                 <div class="plan-card" style="border-width: 3px; transform: scale(1.05); background: rgba(0, 210, 255, 0.1);">
-                    <h4 class="accent">GAMER</h4>
+                    <h4 class="accent">GAMER PRO</h4>
                     <p class="price">₺299</p>
                     <p><small>8GB RAM / NVMe SSD</small></p>
                 </div>
@@ -176,12 +181,11 @@
                     <p><small>16GB RAM / %100 Uptime</small></p>
                 </div>
             </div>
-            
-            <center style="margin-top: 30px;">
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn-action" style="background: var(--primary); padding: 20px 50px;">SİTEYİ ZİYARET ET</a>
+            <center style="margin-top: 40px;">
+                <p style="margin-bottom: 20px;">Hemen bir sunucu sahibi ol ve gücünü kanıtla!</p>
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn-action" style="background: var(--primary); padding: 15px 40px; font-size: 1.2rem;">CRAFTHOSTING'E GİT</a>
             </center>
         </div>
-
     </div>
 </div>
 
@@ -189,18 +193,16 @@
     function openTab(tabId, element) {
         const tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => tab.classList.remove('active'));
-        
         const navs = document.querySelectorAll('.nav-item');
         navs.forEach(nav => nav.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active');
         element.classList.add('active');
     }
 
     setInterval(() => {
-        const p = Math.floor(Math.random() * 4) + 12;
+        const p = Math.floor(Math.random() * 6) + 8;
         document.getElementById('pingDisplay').innerText = 'Ping: ' + p + 'ms';
-    }, 2000);
+    }, 2500);
 </script>
 
 </body>
