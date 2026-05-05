@@ -28,7 +28,7 @@
             width: 280px; background: var(--sidebar);
             border-right: 1px solid var(--border);
             display: flex; flex-direction: column; padding: 40px 20px;
-            box-shadow: 10px 0 34px rgba(0,0,0,0.5);
+            box-shadow: 10px 0 50px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
@@ -76,7 +76,7 @@
             background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
             padding: 40px; border-radius: 30px; margin-bottom: 40px;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 30px 40px rgba(37, 99, 235, 0.2);
         }
 
         .tool-box { background: #020617; border-radius: 20px; padding: 30px; border: 1px solid var(--border); }
@@ -106,6 +106,7 @@
         <div class="nav-item" onclick="tab('clients', this)">🛡️ Client Listesi</div>
         <div class="nav-item" onclick="tab('tools', this)">🛠️ Sunucu Analiz</div>
         <div class="nav-item" onclick="tab('mods', this)">🚀 100+ Mod</div>
+        <div class="nav-item" onclick="tab('mods', this)">🔴yakında!</div>
     </aside>
 
     <main class="main">
@@ -120,8 +121,8 @@
             </div>
             <div class="grid">
                 <div class="card">
-                    <h2>Performans VDS</h2>
-                    <p>En düşük ping ve en yüksek TPS garantili özel sunucular.</p>
+                    <h2>Performanslı VPS</h2>
+                    <p>En düşük ping ve en yüksek TPS garantili özel wep panel sunucular.</p>
                     <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;">89₺<small style="font-size:1rem; color:#94a3b8">/ay</small></div>
                     <a href="https://www.crafthosting.com.tr" class="btn">İNCELE</a>
                 </div>
@@ -132,17 +133,17 @@
             <h1>Özel İstemciler</h1>
             <div class="grid">
                 <div class="card">
-                    <h2>Meteor Client</h2>
+                    <h3>Meteor Client</3>
                     <p>En popüler teknik ve PvP odaklı Minecraft istemcisi.</p>
                     <a href="https://meteorclient.com/" target="_blank" class="btn">İNDİR</a>
                 </div>
                 <div class="card">
-                    <h2>ThunderHack</h2>
+                    <h3>ThunderHack</h3>
                     <p>Anarchy sunucuları için özel olarak optimize edilmiş araçlar.</p>
                     <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" target="_blank" class="btn">İNDİR</a>
                 </div>
                 <div class="card">
-                    <h2>Catlean</h2>
+                    <h3>Catlean</h3>
                     <p>Boxmining sunucuları için özel olarak tasarlanmış client.</p>
                     <a href="https://catlean.su/" target="_blank" class="btn">İNDİR</a>
                 </div>
@@ -192,7 +193,7 @@
                     > SUNUCU: ${ip}<br>
                     > OYUNCULAR: ${Math.floor(Math.random()*500)}/1000<br>
                     > GECİKME: ${Math.floor(Math.random()*40)}ms<br>
-                    > LOKASYON: Türkiye / İstanbul
+                    > LOKASYON: Yakında / Fix
                 `;
             }, 1000);
         }
