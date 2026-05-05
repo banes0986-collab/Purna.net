@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TRIGGERBABA | CRAFTHOSTİNG</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -10,136 +10,93 @@
 <body>
 
 <div class="layout">
-    <nav class="sidebar">
-        <div class="nav-btn active" onclick="switchTab('home', this)">🏠 <span>DASHBOARD</span></div>
-        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️ <span>ARAÇLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️ <span>CLIENTLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('host', this)">☁️ <span>CRAFTHOSTING</span></div>
-    </nav>
-
     <main class="content">
-        
         <div id="home" class="tab active-tab">
-            <div class="brand">
-                <div class="brand-logo">CRAFTHOSTING <br><small style="font-size: 0.6rem;">MINECRAFT HOSTING</small></div>
-            </div>
-            <h1>Tekrar Hoş Geldin, <span style="color:var(--primary)">TriggerBaba</span></h1>
-            <p style="color:#94a3b8; margin-bottom: 30px;">Tüm sistemler aktif, yönetim paneli hazır.</p>
+            <h1 style="font-size: 2rem; margin-bottom: 10px;">Selam, <span style="color:var(--primary)">TriggerBaba</span></h1>
+            <p style="color:#94a3b8; margin-bottom: 25px;">Telefonundan her şeyi yönetebilirsin.</p>
             
             <div class="grid">
                 <div class="card">
-                    <h3>Sunucu Durumu</h3>
-                    <p>Paket kaybı: 0%</p>
-                    <p>Uptime: 100%</p>
-                    <p>Durum: <span style="color:var(--success)">Aktif</span></p>
-                </div>
-                <div class="card">
-                    <h3>Duyuru</h3>
-                    <p>Crafthosting altyapısı ile Ryzen 9 işlemcilerin gücünü hissedin. DDoS koruması tüm paketlerde standarttır.</p>
+                    <h3>📊 Sistem</h3>
+                    <p>Uptime: %100</p>
+                    <p>Hız: Ultra Akıcı</p>
                 </div>
             </div>
         </div>
 
         <div id="tools" class="tab">
-            <h1>Sunucu <span style="color:var(--primary)">Analiz Merkezi</span></h1>
-            <div class="card">
-                <div class="input-group">
-                    <input type="text" id="serverIp" class="tool-input" placeholder="Sunucu IP Adresi (örn: play.hypixel.net)">
-                    <button class="btn" onclick="analyzeServer()">ANALİZ ET</button>
-                </div>
-                <div class="terminal" id="consoleOutput">
-                    > Analiz başlatmak için bir sunucu IP adresi girin...
+            <h1>🛠️ Sunucu Analiz</h1>
+            <div class="card" style="margin-top: 15px;">
+                <input type="text" id="serverIp" style="width:100%; padding:15px; border-radius:12px; border:1px solid #334155; background:#1e293b; color:white; margin-bottom:10px; outline:none;" placeholder="Sunucu IP Adresi">
+                <button class="btn" onclick="analyzeServer()">ANALİZ ET</button>
+                <div class="terminal" id="consoleOutput" style="margin-top:15px;">
+                    > IP gir ve tara...
                 </div>
             </div>
         </div>
 
         <div id="clients" class="tab">
-            <h1>Elite <span style="color:var(--primary)">Clients</span></h1>
+            <h1>⚔️ Clientlar</h1>
             <div class="grid">
-                <div class="card">
-                    <h3>Meteor Client</h3>
-                    <p>En gelişmiş açık kaynaklı Minecraft hile istemcisi. Her sürümle uyumlu.</p>
-                    <a href="https://meteorclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
-                </div>
-                <div class="card">
-                    <h3>ThunderHack</h3>
-                    <p>Anarchy sunucuları için özel olarak geliştirilmiş yüksek performanslı client.</p>
-                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
-                </div>
-                <div class="card">
-                    <h3>Doomsday</h3>
-                    <p>Gelişmiş exploit modülleri ve stabil arayüz.</p>
-                    <a href="https://doomsdayclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
-                </div>
+                <div class="card"><h3>Meteor</h3><p>PvP'de tek geçer.</p><a href="https://meteorclient.com/" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">YÜKLE</a></div>
+                <div class="card"><h3>Thunder</h3><p>Anarchy kralı.</p><a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">YÜKLE</a></div>
             </div>
         </div>
 
         <div id="mods" class="tab">
-            <h1>FPS <span style="color:var(--primary)">Boosters</span></h1>
+            <h1>🚀 Modlar & Zırhlar</h1>
             <div class="grid">
-                <div class="card"><h3>Sodium</h3><p>Minecraft motorunu optimize ederek FPS'i tavan yaptırır.</p><a href="https://modrinth.com/mod/sodium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>Krypton</h3><p>Stackleri ve ağ paketlerini düzenleyerek pinginizi düşürür.</p><a href="https://modrinth.com/mod/krypton" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>Lithium</h3><p>Oyun içi fizik ve tick hesaplamalarını hızlandırır.</p><a href="https://modrinth.com/mod/lithium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>FerriteCore</h3><p>RAM kullanımını ciddi oranda azaltarak drop yemenizi engeller.</p><a href="https://modrinth.com/mod/ferritecore" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
+                <div class="card">
+                    <h3>🛡️ Armor Statues</h3>
+                    <p>Armor standlarını istediğin gibi şekillendir.</p>
+                    <a href="https://modrinth.com/mod/armor-statues" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">GET</a>
+                </div>
+                <div class="card">
+                    <h3>🧥 Cosmetic Armor</h3>
+                    <p>Zırhın koruması kalsın ama görüntüsü değişsin!</p>
+                    <a href="https://modrinth.com/mod/cosmetic-armor" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">GET</a>
+                </div>
+                <div class="card"><h3>⚡ Sodium</h3><p>Maksimum FPS artışı.</p><a href="https://modrinth.com/mod/sodium" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">GET</a></div>
+                <div class="card"><h3>🌡️ Lithium</h3><p>Sunucu/Oyun hızlandırma.</p><a href="https://modrinth.com/mod/lithium" class="btn" style="text-decoration:none; display:block; text-align:center; margin-top:10px;">GET</a></div>
             </div>
         </div>
 
         <div id="host" class="tab">
             <div class="card" style="text-align:center; border: 2px solid var(--primary);">
-                <h2 style="color:var(--primary); font-size: 2rem; margin-bottom:15px; font-family:'JetBrains Mono'">CRAFTHOSTING</h2>
-                <p>Türkiye'nin en hızlı ve güvenilir Minecraft hosting hizmeti.</p>
-                <div class="grid" style="margin-top: 25px;">
-                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Ryzen 9 7950X</h4><p>En yüksek işlemci hızı.</p></div>
-                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Anti-DDoS</h4><p>2.5 TBPS devasa koruma.</p></div>
-                </div>
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="margin-top:30px; display:inline-block; width: auto; padding: 15px 50px;">SİTEYE GİT</a>
+                <h2 style="color:var(--primary); font-size: 1.8rem;">CRAFTHOSTING</h2>
+                <p style="margin: 15px 0;">Türkiye'nin en hızlı Ryzen sunucuları.</p>
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn">SİTEYE GİT</a>
             </div>
         </div>
     </main>
+
+    <nav class="sidebar">
+        <div class="nav-btn active" onclick="switchTab('home', this)">🏠<span>DASH</span></div>
+        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️<span>ARAÇ</span></div>
+        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️<span>HİLE</span></div>
+        <div class="nav-btn" onclick="switchTab('mods', this)">🚀<span>MOD</span></div>
+        <div class="nav-btn" onclick="switchTab('host', this)">☁️<span>HOST</span></div>
+    </nav>
 </div>
 
 <script>
-    // Sekme değiştirme fonksiyonu
     function switchTab(tabId, element) {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
         document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active-tab');
         element.classList.add('active');
+        window.scrollTo(0,0);
     }
 
-    // Sunucu analiz simülasyonu
     function analyzeServer() {
         const ip = document.getElementById('serverIp').value;
-        const consoleOut = document.getElementById('consoleOutput');
-        
-        if(!ip) {
-            consoleOut.innerHTML = "<span style='color:#ef4444'>> HATA: Lütfen geçerli bir IP adresi girin!</span>";
-            return;
-        }
-
-        consoleOut.innerHTML = "> Sunucuya bağlanılıyor: " + ip + "...<br>> Paketler analiz ediliyor...";
-        
+        const out = document.getElementById('consoleOutput');
+        if(!ip) return;
+        out.innerHTML = "> Veriler çekiliyor...";
         setTimeout(() => {
-            // Rastgele ama gerçekçi veriler oluşturuyoruz
-            const players = Math.floor(Math.random() * 450) + 5;
-            const ping = Math.floor(Math.random() * 25) + 8;
-            const tps = (19.5 + Math.random() * 0.5).toFixed(2);
-            
-            consoleOut.innerHTML = `
-                > Bağlantı Kuruldu: ${ip}<br>
-                > ----------------------------------<br>
-                > <span style="color:var(--primary)">AKTİF OYUNCU:</span> ${players} / 1000<br>
-                > <span style="color:var(--primary)">ANLIK PİNG:</span> ${ping}ms<br>
-                > <span style="color:var(--primary)">SUNUCU TPS:</span> ${tps}<br>
-                > <span style="color:var(--primary)">KORUMA:</span> Aktif (DDoS Shield)<br>
-                > ----------------------------------<br>
-                > Durum: Stabil. Veri akışı normal.
-            `;
-        }, 1200);
+            out.innerHTML = `> IP: ${ip}<br>> Durum: AKTİF ✅<br>> Oyuncu: ${Math.floor(Math.random()*200)}/500<br>> Ping: 12ms<br>> TPS: 19.95`;
+        }, 1000);
     }
 </script>
-
 </body>
 </html>
