@@ -4,129 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRIGGERBABA | KOMUTA MERKEZİ</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #030712;
-            --card: #0f172a;
-            --primary: #38bdf8;
-            --accent: #8b5cf6;
-            --text: #f1f5f9;
-            --success: #10b981;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; }
-
-        .layout { display: flex; height: 100vh; }
-
-        /* Sidebar */
-        .sidebar {
-            width: 80px; background: #000; border-right: 1px solid rgba(56, 189, 248, 0.1);
-            display: flex; flex-direction: column; align-items: center; padding: 25px 0; transition: 0.3s;
-        }
-        .sidebar:hover { width: 220px; }
-        .nav-btn {
-            width: 50px; height: 50px; margin-bottom: 15px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; position: relative; color: #475569;
-        }
-        .sidebar:hover .nav-btn { width: 85%; justify-content: flex-start; padding-left: 15px; }
-        .nav-btn span { position: absolute; left: 60px; opacity: 0; font-weight: 700; transition: 0.2s; white-space: nowrap; }
-        .sidebar:hover .nav-btn span { opacity: 1; color: white; }
-        .nav-btn.active { background: var(--primary); color: #000; }
-
-        /* Main Content */
-        .content { flex: 1; padding: 40px; overflow-y: auto; scroll-behavior: smooth; }
-        .tab { display: none; animation: fadeIn 0.4s ease; }
-        .tab.active-tab { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Logo Design */
-        .brand { text-align: center; margin-bottom: 40px; }
-        .brand-logo { 
-            font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.5rem; 
-            color: var(--primary); border: 2px solid var(--primary); padding: 10px; display: inline-block;
-            border-radius: 8px; text-transform: uppercase;
-        }
-
-        /* Dashboard & Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        .card h3 { color: var(--primary); margin-bottom: 10px; }
-        .card p { color: #94a3b8; font-size: 0.9rem; }
-
-        /* Tools / Terminal Section */
-        .terminal {
-            background: #000; border-radius: 10px; padding: 20px; font-family: 'JetBrains Mono', monospace;
-            color: var(--success); margin-top: 20px; border: 1px solid #1e293b; min-height: 150px;
-        }
-        .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
-        .tool-input { 
-            flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #334155; 
-            background: #1e293b; color: white; outline: none;
-        }
-        .btn { 
-            padding: 10px 20px; background: var(--primary); color: #000; border: none; 
-            border-radius: 8px; font-weight: 800; cursor: pointer;
-        }
-
-        /* Client & Mod Buttons */
-        .download-btn {
-            display: block; width: 100%; text-align: center; padding: 10px;
-            background: #1e293b; color: var(--primary); text-decoration: none;
-            margin-top: 15px; border-radius: 8px; font-weight: 700; transition: 0.3s;
-        }
-        .download-btn:hover { background: var(--primary); color: #000; }
-
-        @media (max-width: 768px) {
-            .sidebar { width: 100%; height: 60px; position: fixed; bottom: 0; flex-direction: row; border-top: 1px solid rgba(56, 189, 248, 0.2); }
-            .content { padding: 20px; padding-bottom: 80px; }
-            .sidebar:hover { width: 100%; }
-        }
-    </style>
 </head>
 <body>
 
 <div class="layout">
     <nav class="sidebar">
         <div class="nav-btn active" onclick="switchTab('home', this)">🏠 <span>DASHBOARD</span></div>
-        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️ <span>TOOLS</span></div>
-        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️ <span>CLIENTS</span></div>
-        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODS</span></div>
+        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️ <span>ARAÇLAR</span></div>
+        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️ <span>CLIENTLAR</span></div>
+        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODLAR</span></div>
         <div class="nav-btn" onclick="switchTab('host', this)">☁️ <span>CRAFTHOSTING</span></div>
     </nav>
 
     <main class="content">
+        
         <div id="home" class="tab active-tab">
             <div class="brand">
                 <div class="brand-logo">CRAFTHOSTING <br><small style="font-size: 0.6rem;">MINECRAFT HOSTING</small></div>
             </div>
             <h1>Tekrar Hoş Geldin, <span style="color:var(--primary)">TriggerBaba</span></h1>
-            <p style="color:#94a3b8; margin-bottom: 30px;">Tüm sistemler aktif, modların güncel.</p>
+            <p style="color:#94a3b8; margin-bottom: 30px;">Tüm sistemler aktif, yönetim paneli hazır.</p>
             
             <div class="grid">
                 <div class="card">
-                    <h3>Sunucu Durumun</h3>
+                    <h3>Sunucu Durumu</h3>
                     <p>Paket kaybı: 0%</p>
                     <p>Uptime: 100%</p>
+                    <p>Durum: <span style="color:var(--success)">Aktif</span></p>
                 </div>
                 <div class="card">
-                    <h3>Hızlı Duyuru</h3>
-                    <p>Crafthosting üzerinden aldığın sunucularda DDoS koruması varsayılan olarak aktiftir.</p>
+                    <h3>Duyuru</h3>
+                    <p>Crafthosting altyapısı ile Ryzen 9 işlemcilerin gücünü hissedin. DDoS koruması tüm paketlerde standarttır.</p>
                 </div>
             </div>
         </div>
 
         <div id="tools" class="tab">
-            <h1>Sunucu <span style="color:var(--primary)">Analiz</span></h1>
+            <h1>Sunucu <span style="color:var(--primary)">Analiz Merkezi</span></h1>
             <div class="card">
                 <div class="input-group">
                     <input type="text" id="serverIp" class="tool-input" placeholder="Sunucu IP Adresi (örn: play.hypixel.net)">
                     <button class="btn" onclick="analyzeServer()">ANALİZ ET</button>
                 </div>
                 <div class="terminal" id="consoleOutput">
-                    > Analiz başlatmak için bir IP adresi girin...
+                    > Analiz başlatmak için bir sunucu IP adresi girin...
                 </div>
             </div>
         </div>
@@ -136,18 +59,18 @@
             <div class="grid">
                 <div class="card">
                     <h3>Meteor Client</h3>
-                    <p>PvP ve teknik hileler için 1 numaralı tercih.</p>
-                    <a href="https://meteorclient.com/" class="download-btn">İNDİR</a>
+                    <p>En gelişmiş açık kaynaklı Minecraft hile istemcisi. Her sürümle uyumlu.</p>
+                    <a href="https://meteorclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
                 </div>
                 <div class="card">
                     <h3>ThunderHack</h3>
-                    <p>Anarchy sunucuları için en sağlam Recode sürümü.</p>
-                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="download-btn">İNDİR</a>
+                    <p>Anarchy sunucuları için özel olarak geliştirilmiş yüksek performanslı client.</p>
+                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
                 </div>
                 <div class="card">
                     <h3>Doomsday</h3>
-                    <p>Özel bypass modülleri içeren teknik client.</p>
-                    <a href="https://doomsdayclient.com/" class="download-btn">İNDİR</a>
+                    <p>Gelişmiş exploit modülleri ve stabil arayüz.</p>
+                    <a href="https://doomsdayclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
                 </div>
             </div>
         </div>
@@ -155,59 +78,66 @@
         <div id="mods" class="tab">
             <h1>FPS <span style="color:var(--primary)">Boosters</span></h1>
             <div class="grid">
-                <div class="card"><h3>Sodium</h3><p>FPS'i 3 katına çıkaran efsane mod.</p><a href="https://modrinth.com/mod/sodium" class="download-btn">İNDİR</a></div>
-                <div class="card"><h3>Krypton</h3><p>İnternet paketlerini optimize eder, pingi düşürür.</p><a href="https://modrinth.com/mod/krypton" class="download-btn">İNDİR</a></div>
-                <div class="card"><h3>Lithium</h3><p>Oyun içi işlemci yükünü optimize eder.</p><a href="https://modrinth.com/mod/lithium" class="download-btn">İNDİR</a></div>
-                <div class="card"><h3>NoWeather</h3><p>Hava durumunu kapatarak FPS kazandırır.</p><a href="https://modrinth.com/mod/noweather" class="download-btn">İNDİR</a></div>
+                <div class="card"><h3>Sodium</h3><p>Minecraft motorunu optimize ederek FPS'i tavan yaptırır.</p><a href="https://modrinth.com/mod/sodium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
+                <div class="card"><h3>Krypton</h3><p>Stackleri ve ağ paketlerini düzenleyerek pinginizi düşürür.</p><a href="https://modrinth.com/mod/krypton" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
+                <div class="card"><h3>Lithium</h3><p>Oyun içi fizik ve tick hesaplamalarını hızlandırır.</p><a href="https://modrinth.com/mod/lithium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
+                <div class="card"><h3>FerriteCore</h3><p>RAM kullanımını ciddi oranda azaltarak drop yemenizi engeller.</p><a href="https://modrinth.com/mod/ferritecore" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
             </div>
         </div>
 
         <div id="host" class="tab">
-            <div class="card" style="text-align:center;">
-                <h2 style="color:var(--primary); font-size: 2rem; margin-bottom:15px;">CRAFTHOSTING</h2>
-                <p>Türkiye'nin en hızlı Ryzen 9 Minecraft sunucuları.</p>
+            <div class="card" style="text-align:center; border: 2px solid var(--primary);">
+                <h2 style="color:var(--primary); font-size: 2rem; margin-bottom:15px; font-family:'JetBrains Mono'">CRAFTHOSTING</h2>
+                <p>Türkiye'nin en hızlı ve güvenilir Minecraft hosting hizmeti.</p>
                 <div class="grid" style="margin-top: 25px;">
-                    <div class="card"><h4>Yüksek TPS</h4><p>Lag sorunu olmadan oyun keyfi.</p></div>
-                    <div class="card"><h4>DDoS Shield</h4><p>Bot saldırılarını anında engeller.</p></div>
+                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Ryzen 9 7950X</h4><p>En yüksek işlemci hızı.</p></div>
+                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Anti-DDoS</h4><p>2.5 TBPS devasa koruma.</p></div>
                 </div>
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="margin-top:30px; display:inline-block; width: auto;">SİTEYE GİT</a>
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="margin-top:30px; display:inline-block; width: auto; padding: 15px 50px;">SİTEYE GİT</a>
             </div>
         </div>
     </main>
 </div>
 
 <script>
+    // Sekme değiştirme fonksiyonu
     function switchTab(tabId, element) {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
         document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('active'));
+        
         document.getElementById(tabId).classList.add('active-tab');
         element.classList.add('active');
     }
 
+    // Sunucu analiz simülasyonu
     function analyzeServer() {
         const ip = document.getElementById('serverIp').value;
         const consoleOut = document.getElementById('consoleOutput');
         
         if(!ip) {
-            consoleOut.innerHTML = "<span style='color:red'>> HATA: IP Adresi boş olamaz!</span>";
+            consoleOut.innerHTML = "<span style='color:#ef4444'>> HATA: Lütfen geçerli bir IP adresi girin!</span>";
             return;
         }
 
-        consoleOut.innerHTML = "> Veriler çekiliyor: " + ip + "...<br>> Bağlanılıyor...";
+        consoleOut.innerHTML = "> Sunucuya bağlanılıyor: " + ip + "...<br>> Paketler analiz ediliyor...";
         
         setTimeout(() => {
-            const players = Math.floor(Math.random() * 500) + 12;
-            const ping = Math.floor(Math.random() * 20) + 5;
-            const tps = (19 + Math.random()).toFixed(2);
+            // Rastgele ama gerçekçi veriler oluşturuyoruz
+            const players = Math.floor(Math.random() * 450) + 5;
+            const ping = Math.floor(Math.random() * 25) + 8;
+            const tps = (19.5 + Math.random() * 0.5).toFixed(2);
             
             consoleOut.innerHTML = `
-                > Bağlantı Başarılı: ${ip}<br>
-                > <span style="color:var(--primary)">OYUNCU SAYISI:</span> ${players} / 1000<br>
-                > <span style="color:var(--primary)">PING:</span> ${ping}ms<br>
+                > Bağlantı Kuruldu: ${ip}<br>
+                > ----------------------------------<br>
+                > <span style="color:var(--primary)">AKTİF OYUNCU:</span> ${players} / 1000<br>
+                > <span style="color:var(--primary)">ANLIK PİNG:</span> ${ping}ms<br>
                 > <span style="color:var(--primary)">SUNUCU TPS:</span> ${tps}<br>
-                > Durum: Stabil (Crafthosting Koruması Tespit Edildi)
+                > <span style="color:var(--primary)">KORUMA:</span> Aktif (DDoS Shield)<br>
+                > ----------------------------------<br>
+                > Durum: Stabil. Veri akışı normal.
             `;
-        }, 1500);
+        }, 1200);
     }
 </script>
 
