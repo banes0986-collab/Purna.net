@@ -3,211 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIGGER & CRAFTHOSTİNG| MINECRAFT ULTIMATE</title>
+    <title>TRIGGER HUB | PROFESSIONAL DASHBOARD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep-blue: #020617;
-            --card-blue: #0f172a;
-            --accent-neon: #38bdf8;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --success: #10b981;
+            --bg: #030712;
+            --primary: #38bdf8;
+            --primary-dark: #0ea5e9;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border: rgba(56, 189, 248, 0.2);
+            --glass: rgba(255, 255, 255, 0.03);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep-blue);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.6;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Büyük ve Özel Başlık Alanı */
-        header {
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(to bottom, #1e293b, var(--bg-deep-blue));
-            border-bottom: 2px solid var(--accent-neon);
+        /* Arka Plandaki Hareketli Işık */
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
         }
 
-        header h1 {
-            font-size: 4rem; /* Çok büyük yazı */
-            margin: 0;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px var(--accent-neon);
+        @keyframes move {
+            from { top: -10%; left: -10%; }
+            to { top: 80%; left: 80%; }
         }
 
-        /* Ping Göstergesi */
-        .ping-container {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid var(--accent-neon);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 50px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: var(--card-blue);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #1e293b;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-            border-color: var(--accent-neon);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
-        }
-
-        .card h2 {
-            font-size: 1.8rem;
-            color: var(--accent-neon);
-            margin-bottom: 20px;
-        }
-
-        .link-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-list li {
-            background: rgba(255,255,255,0.05);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 10px;
+        /* Navigation */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 25px 8%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Modern Grid Layout */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto 100px;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 35px;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            background: rgba(15, 23, 42, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .large { grid-column: span 8; }
+        .small { grid-column: span 4; }
+        .full { grid-column: span 12; }
+
+        h2 { font-family: 'Orbitron', sans-serif; margin-bottom: 20px; font-size: 1.5rem; color: var(--primary); }
+
+        /* CraftHosting Reklamı - En Üst Düzey */
+        .host-banner {
+            background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .host-banner .btn-white {
+            background: white;
+            color: #000;
+            padding: 15px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        /* Listeler ve Linkler */
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
         }
 
         .btn-download {
-            background: var(--accent-neon);
+            background: var(--primary);
             color: #000;
-            padding: 8px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* CraftHosting Özel Alanı */
-        .promo-banner {
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            color: #000;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 900;
-            font-size: 1.5rem;
-        }
-
-        .promo-banner a {
-            color: #000;
-            text-decoration: underline;
-        }
-
-        code {
-            display: block;
-            background: #000;
-            padding: 15px;
+            padding: 10px 25px;
             border-radius: 10px;
-            color: var(--success);
-            margin-top: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover { background: #fff; }
+
+        /* Ping Aracı */
+        #ping-monitor {
+            font-family: monospace;
+            background: #000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #10b981;
+            display: inline-block;
+        }
+
+        @media (max-width: 992px) {
+            .large, .small { grid-column: span 12; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>TRIGGER HUB</h1>
-    <div class="ping-container">
-        SİSTEM DURUMU: <span style="color: var(--success);">AKTİF</span> | GECİKMEYE: <span id="pingText">--</span>ms
-    </div>
-</header>
+<div class="glow"></div>
+
+<nav>
+    <div class="logo">TRIGGER.HUB</div>
+    <div id="ping-monitor">SYSTEM_LATENCY: <span id="val">--</span>ms</div>
+</nav>
+
+<section class="hero">
+    <h1>UNLEASH POWER</h1>
+    <p>Minecraft'ın sınırlarını zorla. En iyi clientlar, en yüksek FPS ve kesintisiz hosting deneyimi burada başlar.</p>
+</section>
 
 <div class="container">
-    <div class="promo-banner">
-        🚀 KENDİ SUNUCUNU MU KURMAK İSTİYORSUN? <a href="https://www.crafthosting.com.tr/" target="_blank">CRAFTHOSTING İLE HEMEN BAŞLA!</a>
+    
+    <div class="card full host-banner">
+        <div>
+            <h2 style="color: white; font-size: 2rem;">SINIRSIZ PERFORMANS</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 0;">Crafthosting ile sunucunu saniyeler içinde kur, kasmadan oyna!</p>
+        </div>
+        <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn-white">HEMEN AL</a>
     </div>
 
-    <div class="grid">
-        <div class="card">
-            <h2>Hacking Clients</h2>
-            <ul class="link-list">
-                <li>
-                    <span>Doomsday Client</span>
-                    <a href="https://github.com/doomsday-client/doomsday/releases" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-                <li>
-                    <span>Wurst Client</span>
-                    <a href="https://www.wurstclient.net/download/" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-                <li>
-                    <span>Meteor Client</span>
-                    <a href="https://meteorclient.com/" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-            </ul>
+    <div class="card large">
+        <h2>PREMIUM CLIENTS</h2>
+        <div class="download-item">
+            <div>
+                <strong>DOOMSDAY</strong>
+                <p style="font-size: 0.8rem; color: #94a3b8;">Sınırsız mod ve bypass özelliği.</p>
+            </div>
+            <a href="https://github.com/doomsday-client/doomsday/releases" class="btn-download">ACCESS</a>
         </div>
-
-        <div class="card">
-            <h2>FPS Modları (Fabric)</h2>
-            <ul class="link-list">
-                <li>
-                    <span>Sodium (FPS Boost)</span>
-                    <a href="https://modrinth.com/mod/sodium" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-                <li>
-                    <span>Lithium (Game Logic)</span>
-                    <a href="https://modrinth.com/mod/lithium" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-                <li>
-                    <span>Iris Shaders</span>
-                    <a href="https://modrinth.com/mod/iris" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>PvP Essentials</h2>
-            <ul class="link-list">
-                <li>
-                    <span>Feather Client</span>
-                    <a href="https://feathermc.com/" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-                <li>
-                    <span>Lunar Client</span>
-                    <a href="https://www.lunarclient.com/" target="_blank" class="btn-download">İNDİR</a>
-                </li>
-            </ul>
-            <p>Özel Armor HUD Kodu:</p>
-            <code>/hud layout load TriggerArmorHUD</code>
+        <div class="download-item">
+            <div>
+                <strong>WURST V7.36</strong>
+                <p style="font-size: 0.8rem; color: #94a3b8;">Klasik güç, modern hız.</p>
+            </div>
+            <a href="https://www.wurstclient.net/download/" class="btn-download">ACCESS</a>
         </div>
     </div>
+
+    <div class="card small">
+        <h2>PERFORMANCE</h2>
+        <div class="download-item">
+            <span>SODIUM</span>
+            <a href="https://modrinth.com/mod/sodium" class="btn-download">GET</a>
+        </div>
+        <div class="download-item">
+            <span>IRIS</span>
+            <a href="https://modrinth.com/mod/iris" class="btn-download">GET</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem; text-align: center; color: #94a3b8;">
+            *Önerilen: Fabric 1.20.1
+        </p>
+    </div>
+
+    <div class="card small">
+        <h2>PVP MASTER</h2>
+        <ul style="list-style: none; color: #94a3b8; font-size: 0.9rem;">
+            <li style="margin-bottom: 10px;">⚡ <b>W-Tap:</b> %40 daha fazla KB.</li>
+            <li style="margin-bottom: 10px;">🛡️ <b>Shield Hub:</b> Otomatik kalkan.</li>
+            <li>🎯 <b>Aim Assist:</b> %100 isabet.</li>
+        </ul>
+    </div>
+
+    <div class="card large">
+        <h2>CUSTOM HUD CONFIG</h2>
+        <pre style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; overflow-x: auto;">
+<code>{
+  "trigger_hud": {
+    "armor_display": "enabled",
+    "coordinates": "top_right",
+    "fps_counter": "neon_blue"
+  }
+}</code></pre>
+    </div>
+
 </div>
 
 <script>
-    // Basit bir Ping Simülasyonu
-    setInterval(() => {
-        const ping = Math.floor(Math.random() * (35 - 15 + 1) + 15);
-        document.getElementById('pingText').innerText = ping;
-    }, 2000);
+    // Gerçekçi Ping Simülasyonu
+    function updatePing() {
+        const p = Math.floor(Math.random() * 10) + 12;
+        document.getElementById('val').innerText = p;
+    }
+    setInterval(updatePing, 1500);
+    updatePing();
 </script>
 
 </body>
