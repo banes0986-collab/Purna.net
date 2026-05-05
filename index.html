@@ -10,7 +10,7 @@
             --bg: #020617; /* Derin Gece Mavisi */
             --sidebar: #0f172a;
             --accent: #38bdf8; /* Parlak Sky Blue */
-            --glass: rgba(15, 23, 42, 0.6);
+            --glass: rgba(20, 23, 42, 0.6);
             --border: rgba(56, 189, 248, 0.1);
         }
 
@@ -20,7 +20,7 @@
             color: #f1f5f9; 
             font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex; height: 100vh; overflow: hidden;
-            background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, transparent 50%);
+            background-image: radial-gradient(circle at 50% -21%, #1e293b 0%, transparent 50%);
         }
 
         /* --- SOL ÜST MENÜ (DARK BLUE) --- */
@@ -28,7 +28,7 @@
             width: 280px; background: var(--sidebar);
             border-right: 1px solid var(--border);
             display: flex; flex-direction: column; padding: 40px 20px;
-            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            box-shadow: 10px 0 34px rgba(0,0,0,0.5);
         }
 
         .brand {
@@ -150,7 +150,9 @@
             <h2>Catlean</h2>
             <p>boxming sunuculari için ozel
             olarak tasarlanmıs client.</p>
-            <a href="https://catlean.su/" class="btn İNDİR</a>
+            <a href="https://catlean.su/" 
+            class="btn İNDİR</a>
+            
         </div>
 
         <div id="tools" class="tab" style="display:none;">
@@ -189,13 +191,13 @@
                     <span style="color:var(--accent)">> DURUM: ÇALIŞIYOR</span><br>
                     > OYUNCULAR: ${Math.floor(Math.random()*500)}/1000<br>
                     > GECİKME: ${Math.floor(Math.random()*40)}ms<br>
-                    > LOKASYON: Türkiye / İstanbul
+                    > LOKASYON: yakında fixlenecek! / bilinmiyor:/
                 `;
             }, 1000);
         }
 
         // 100 Modu Doldur
-        const names = ["Sodium", "Lithium", "Krypton", "ArmorStatues", "Iris", "Starlight", "FerriteCore", "Indium"];
+        const names = ["Sodium", "Lithium", "Krypton", "ArmorStatues", "Iris", "Starlight", "FerriteCore", "Indium", "vulkanMod," "sodium extra", "embeddium"];
         const box = document.getElementById('modBox');
         for(let i=1; i<=100; i++) {
             box.innerHTML += `<div class="mod-item">${names[i%names.length]} v${i}.0</div>`;
