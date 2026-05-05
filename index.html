@@ -3,143 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIGGERBABA | KOMUTA MERKEZİ</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <title>TRİGGERBABA</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030305;
+            --sidebar: #000000;
+            --accent: #00ff9d;
+            --danger: #ff003c;
+            --border: #1a1a1f;
+            --card-bg: #0a0a0c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+            display: flex; height: 100vh; overflow: hidden;
+        }
+
+        /* --- SIDEBAR (SOL ÜST) --- */
+        .sidebar {
+            width: 280px; background: var(--sidebar); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; padding: 40px 20px;
+        }
+
+        .brand-zone {
+            font-family: 'Syncopate', sans-serif; font-size: 1.2rem; color: var(--accent);
+            letter-spacing: 4px; margin-bottom: 60px; padding-left: 10px;
+        }
+
+        .nav-item {
+            padding: 18px; margin-bottom: 10px; border-radius: 4px; cursor: pointer;
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #444;
+            display: flex; align-items: center; gap: 15px; border-left: 4px solid transparent;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover { color: #fff; background: #0a0a0a; }
+        .nav-item.active { 
+            background: #0d0d0d; color: var(--accent); border-left-color: var(--accent);
+        }
+
+        /* --- MAIN VIEW --- */
+        .main-stage { flex: 1; overflow-y: auto; padding: 50px; background: #030305; }
+        .section-header { border-bottom: 2px solid var(--border); padding-bottom: 20px; margin-bottom: 40px; }
+        .section-header h1 { font-size: 3rem; font-weight: 900; letter-spacing: -2px; }
+
+        /* --- TOOLS & CONSOLE --- */
+        .console-container {
+            background: #000; border: 1px solid var(--border); padding: 25px;
+            font-family: 'JetBrains Mono', monospace; border-radius: 8px;
+        }
+        .console-input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        .c-input { 
+            flex: 1; background: #0d0d0d; border: 1px solid #222; padding: 15px;
+            color: var(--accent); border-radius: 5px; outline: none;
+        }
+        .c-btn { 
+            background: var(--accent); color: #000; border: none; padding: 0 25px;
+            font-weight: 900; cursor: pointer; border-radius: 5px;
+        }
+        #console-output { color: #888; line-height: 1.6; font-size: 0.9rem; }
+
+        /* --- CLIENTS (HİLELER) --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { 
+            background: var(--card-bg); border: 1px solid var(--border); padding: 30px;
+            position: relative; transition: 0.3s;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card h3 { font-family: 'JetBrains Mono'; margin-bottom: 10px; color: var(--accent); }
+        .card .tag { font-size: 0.6rem; background: #1a1a1f; padding: 3px 8px; border-radius: 3px; color: #555; margin-bottom: 10px; display: inline-block; }
+        .card .btn-dl { 
+            display: block; margin-top: 20px; padding: 12px; background: #fff; color: #000;
+            text-align: center; text-decoration: none; font-weight: 900; font-size: 0.8rem;
+        }
+
+        /* --- 100 MODS --- */
+        .mod-lib { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+        .mod-u { background: #08080a; padding: 15px; border: 1px solid #111; font-size: 0.75rem; transition: 0.2s; }
+        .mod-u:hover { background: var(--accent); color: #000; }
+
+        /* --- CRAFTHOSTING --- */
+        .host-card { background: #0a0a0c; border: 1px solid var(--accent); padding: 40px; margin-bottom: 20px; }
+        .price { font-size: 3rem; font-weight: 900; margin: 20px 0; }
+    </style>
 </head>
 <body>
 
-<div class="layout">
-    <nav class="sidebar">
-        <div class="nav-btn active" onclick="switchTab('home', this)">🏠 <span>DASHBOARD</span></div>
-        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️ <span>ARAÇLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️ <span>CLIENTLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODLAR</span></div>
-        <div class="nav-btn" onclick="switchTab('host', this)">☁️ <span>CRAFTHOSTING</span></div>
-    </nav>
+    <aside class="sidebar">
+        <div class="brand-zone">TG_CORE</div>
+        <ul class="nav-list">
+            <li class="nav-item active" onclick="tab('host', this)">CRAFTHOSTING</li>
+            <li class="nav-item" onclick="tab('clients', this)">CLIENTS_EXPLOIT</li>
+            <li class="nav-item" onclick="tab('tools', this)">NETWORK_TOOLS</li>
+            <li class="nav-item" onclick="tab('mods', this)">MOD_ARCHIVE</li>
+        </ul>
+    </aside>
 
-    <main class="content">
+    <main class="main-stage">
         
-        <div id="home" class="tab active-tab">
-            <div class="brand">
-                <div class="brand-logo">CRAFTHOSTING <br><small style="font-size: 0.6rem;">MINECRAFT HOSTING</small></div>
+        <div id="host" class="content-tab">
+            <div class="section-header"><h1>SERVER_INFRASTRUCTURE</h1></div>
+            <div class="host-card">
+                <span style="color:var(--accent); font-family:'JetBrains Mono'">[ RYZEN 9 PRO ]</span>
+                <div class="price">89₺<span style="font-size:1rem; color:#444">/ay</span></div>
+                <p style="color:#666; margin-bottom:25px;">2.5 TBPS DDoS Shield + NVMe Gen4 Storage.</p>
+                <a href="https://www.crafthosting.com.tr" target="_blank" style="display:inline-block; padding:15px 40px; background:var(--accent); color:#000; text-decoration:none; font-weight:900;">SATIN AL</a>
             </div>
-            <h1>Tekrar Hoş Geldin, <span style="color:var(--primary)">TriggerBaba</span></h1>
-            <p style="color:#94a3b8; margin-bottom: 30px;">Tüm sistemler aktif, yönetim paneli hazır.</p>
-            
+        </div>
+
+        <div id="clients" class="content-tab" style="display:none;">
+            <div class="section-header"><h1>CLIENT_EXPLOITS</h1></div>
             <div class="grid">
                 <div class="card">
-                    <h3>Sunucu Durumu</h3>
-                    <p>Paket kaybı: 0%</p>
-                    <p>Uptime: 100%</p>
-                    <p>Durum: <span style="color:var(--success)">Aktif</span></p>
+                    <div class="tag">STABLE</div>
+                    <h3>METEOR_CLIENT</h3>
+                    <p>En gelişmiş açık kaynaklı Minecraft exploit sistemi.</p>
+                    <a href="https://meteorclient.com/" class="btn-dl">DOWNLOAD</a>
                 </div>
                 <div class="card">
-                    <h3>Duyuru</h3>
-                    <p>Crafthosting altyapısı ile Ryzen 9 işlemcilerin gücünü hissedin. DDoS koruması tüm paketlerde standarttır.</p>
+                    <div class="tag">RECODE</div>
+                    <h3>THUNDERHACK</h3>
+                    <p>Anarchy ve PvP odaklı gelişmiş modüller.</p>
+                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn-dl">DOWNLOAD</a>
+                </div>
+                <div class="card">
+                    <div class="tag">BETA</div>
+                    <h3>DOOMSDAY</h3>
+                    <p>Teknik hileler ve world-gen exploitleri.</p>
+                    <a href="https://doomsdayclient.com/" class="btn-dl">DOWNLOAD</a>
                 </div>
             </div>
         </div>
 
-        <div id="tools" class="tab">
-            <h1>Sunucu <span style="color:var(--primary)">Analiz Merkezi</span></h1>
-            <div class="card">
-                <div class="input-group">
-                    <input type="text" id="serverIp" class="tool-input" placeholder="Sunucu IP Adresi (örn: play.hypixel.net)">
-                    <button class="btn" onclick="analyzeServer()">ANALİZ ET</button>
+        <div id="tools" class="content-tab" style="display:none;">
+            <div class="section-header"><h1>NETWORK_SCANNER</h1></div>
+            <div class="console-container">
+                <div class="console-input-group">
+                    <input type="text" id="target-ip" class="c-input" placeholder="Hedef Sunucu IP (play.server.com)">
+                    <button class="c-btn" onclick="runScan()">SCAN</button>
                 </div>
-                <div class="terminal" id="consoleOutput">
-                    > Analiz başlatmak için bir sunucu IP adresi girin...
-                </div>
-            </div>
-        </div>
-
-        <div id="clients" class="tab">
-            <h1>Elite <span style="color:var(--primary)">Clients</span></h1>
-            <div class="grid">
-                <div class="card">
-                    <h3>Meteor Client</h3>
-                    <p>En gelişmiş açık kaynaklı Minecraft hile istemcisi. Her sürümle uyumlu.</p>
-                    <a href="https://meteorclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
-                </div>
-                <div class="card">
-                    <h3>ThunderHack</h3>
-                    <p>Anarchy sunucuları için özel olarak geliştirilmiş yüksek performanslı client.</p>
-                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
-                </div>
-                <div class="card">
-                    <h3>Doomsday</h3>
-                    <p>Gelişmiş exploit modülleri ve stabil arayüz.</p>
-                    <a href="https://doomsdayclient.com/" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">İNDİR</a>
+                <div id="console-output">
+                    > Terminal bekliyor...
                 </div>
             </div>
         </div>
 
-        <div id="mods" class="tab">
-            <h1>FPS <span style="color:var(--primary)">Boosters</span></h1>
-            <div class="grid">
-                <div class="card"><h3>Sodium</h3><p>Minecraft motorunu optimize ederek FPS'i tavan yaptırır.</p><a href="https://modrinth.com/mod/sodium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>Krypton</h3><p>Stackleri ve ağ paketlerini düzenleyerek pinginizi düşürür.</p><a href="https://modrinth.com/mod/krypton" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>Lithium</h3><p>Oyun içi fizik ve tick hesaplamalarını hızlandırır.</p><a href="https://modrinth.com/mod/lithium" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-                <div class="card"><h3>FerriteCore</h3><p>RAM kullanımını ciddi oranda azaltarak drop yemenizi engeller.</p><a href="https://modrinth.com/mod/ferritecore" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">GET</a></div>
-            </div>
+        <div id="mods" class="content-tab" style="display:none;">
+            <div class="section-header"><h1>MOD_DB_100</h1></div>
+            <div class="mod-lib" id="modLib"></div>
         </div>
 
-        <div id="host" class="tab">
-            <div class="card" style="text-align:center; border: 2px solid var(--primary);">
-                <h2 style="color:var(--primary); font-size: 2rem; margin-bottom:15px; font-family:'JetBrains Mono'">CRAFTHOSTING</h2>
-                <p>Türkiye'nin en hızlı ve güvenilir Minecraft hosting hizmeti.</p>
-                <div class="grid" style="margin-top: 25px;">
-                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Ryzen 9 7950X</h4><p>En yüksek işlemci hızı.</p></div>
-                    <div class="card" style="background:rgba(255,255,255,0.02)"><h4>Anti-DDoS</h4><p>2.5 TBPS devasa koruma.</p></div>
-                </div>
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="margin-top:30px; display:inline-block; width: auto; padding: 15px 50px;">SİTEYE GİT</a>
-            </div>
-        </div>
     </main>
-</div>
 
-<script>
-    // Sekme değiştirme fonksiyonu
-    function switchTab(tabId, element) {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
-        document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('active'));
-        
-        document.getElementById(tabId).classList.add('active-tab');
-        element.classList.add('active');
-    }
-
-    // Sunucu analiz simülasyonu
-    function analyzeServer() {
-        const ip = document.getElementById('serverIp').value;
-        const consoleOut = document.getElementById('consoleOutput');
-        
-        if(!ip) {
-            consoleOut.innerHTML = "<span style='color:#ef4444'>> HATA: Lütfen geçerli bir IP adresi girin!</span>";
-            return;
+    <script>
+        function tab(id, el) {
+            document.querySelectorAll('.content-tab').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById(id).style.display = 'block';
+            el.classList.add('active');
         }
 
-        consoleOut.innerHTML = "> Sunucuya bağlanılıyor: " + ip + "...<br>> Paketler analiz ediliyor...";
-        
-        setTimeout(() => {
-            // Rastgele ama gerçekçi veriler oluşturuyoruz
-            const players = Math.floor(Math.random() * 450) + 5;
-            const ping = Math.floor(Math.random() * 25) + 8;
-            const tps = (19.5 + Math.random() * 0.5).toFixed(2);
-            
-            consoleOut.innerHTML = `
-                > Bağlantı Kuruldu: ${ip}<br>
-                > ----------------------------------<br>
-                > <span style="color:var(--primary)">AKTİF OYUNCU:</span> ${players} / 1000<br>
-                > <span style="color:var(--primary)">ANLIK PİNG:</span> ${ping}ms<br>
-                > <span style="color:var(--primary)">SUNUCU TPS:</span> ${tps}<br>
-                > <span style="color:var(--primary)">KORUMA:</span> Aktif (DDoS Shield)<br>
-                > ----------------------------------<br>
-                > Durum: Stabil. Veri akışı normal.
-            `;
-        }, 1200);
-    }
-</script>
+        function runScan() {
+            const ip = document.getElementById('target-ip').value;
+            const out = document.getElementById('console-output');
+            if(!ip) return;
+            out.innerHTML = `> BAĞLANILIYOR: ${ip}...<br>> PORT TARANIYOR...<br>> VERİ PAKETLERİ ANALİZ EDİLİYOR...`;
+            setTimeout(() => {
+                out.innerHTML = `
+                    <span style="color:var(--accent)">> BAĞLANTI BAŞARILI</span><br>
+                    > OYUNCU: ${Math.floor(Math.random()*300)}/1000<br>
+                    > PING: ${Math.floor(Math.random()*30)+5}ms<br>
+                    > TPS: ${(19 + Math.random()).toFixed(2)}<br>
+                    > SERVER_CORE: Crafthosting Protected
+                `;
+            }, 1500);
+        }
 
+        // 100 MOD
+        const mods = ["Sodium", "Lithium", "Krypton", "ArmorStatues", "CosmeticArmor", "Iris", "Indium", "FerriteCore"];
+        const lib = document.getElementById('modLib');
+        for(let i=1; i<=100; i++) {
+            lib.innerHTML += `<div class="mod-u"><h4>${mods[i%mods.length]}</h4>BUILD_${i+100}</div>`;
+        }
+    </script>
 </body>
 </html>
