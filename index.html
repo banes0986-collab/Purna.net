@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIGGER & CRAFTHOSTİNG| VIP</title>
+    <title>TRIGGER MEGA HUB | ELITE EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,239 +12,194 @@
             --bg: #050505;
             --card: rgba(255, 255, 255, 0.03);
             --accent: #ff0055;
+            --success: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg); color: white; overflow: hidden; height: 100vh; }
 
-        body {
-            background-color: var(--bg);
-            color: white;
-            overflow: hidden; /* App hissi için scroll kapalı */
-            height: 100vh;
-        }
-
-        /* Arka Plan Hareketli Gradient */
         .bg-animate {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #101827 0%, #050505 100%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #0a111d 0%, #050505 100%);
             z-index: -1;
         }
 
-        .glow-sphere {
-            position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.07) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -200px; right: -200px;
-        }
+        .app-container { display: flex; height: 100vh; padding: 20px; gap: 20px; }
 
-        /* Ana Layout */
-        .app-container {
-            display: flex;
-            height: 100vh;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        /* Sol Navigasyon Bar (Mega Seksi) */
+        /* Sidebar Gelişmiş */
         .sidebar {
-            width: 100px;
-            background: var(--card);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 0;
+            width: 100px; background: var(--card); backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 30px;
+            display: flex; flex-direction: column; align-items: center; padding: 40px 0;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
         }
-
-        .sidebar:hover { width: 220px; }
-
+        .sidebar:hover { width: 240px; }
         .nav-item {
-            width: 80%;
-            height: 60px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-            color: #666;
+            width: 80%; height: 60px; margin-bottom: 20px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; position: relative; color: #666;
         }
-
-        .nav-item i { font-size: 1.2rem; }
-        .nav-item span { 
-            position: absolute; left: 70px; opacity: 0; 
-            font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
+        .nav-item span { position: absolute; left: 70px; opacity: 0; font-weight: 800; transition: 0.3s; white-space: nowrap; }
         .sidebar:hover .nav-item span { opacity: 1; }
-
-        .nav-item.active {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-        }
+        .nav-item.active { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
 
         /* İçerik Alanı */
         .content {
-            flex: 1;
-            background: var(--card);
-            border-radius: 30px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 50px;
-            position: relative;
-            overflow-y: auto;
+            flex: 1; background: var(--card); border-radius: 30px;
+            backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.05);
+            padding: 50px; overflow-y: auto; position: relative;
         }
-
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; margin-bottom: 20px; letter-spacing: -1px; }
+        .accent { color: var(--primary); }
 
-        /* Başlıklar */
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; margin-bottom: 10px; }
-        .accent-text { color: var(--primary); }
-
-        /* Kart Tasarımları */
+        /* Kartlar */
         .glass-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 25px;
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px; border-radius: 20px; margin-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: center;
             transition: 0.3s;
         }
-
-        .glass-card:hover { background: rgba(255,255,255,0.05); border-color: var(--primary); }
+        .glass-card:hover { background: rgba(255,255,255,0.06); border-color: var(--primary); transform: translateX(10px); }
 
         .btn-action {
-            padding: 12px 30px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 800;
-            transition: 0.3s;
+            padding: 10px 25px; background: white; color: black;
+            text-decoration: none; border-radius: 10px; font-weight: 800; transition: 0.3s;
         }
+        .btn-action:hover { box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
 
-        .btn-action:hover { transform: scale(1.05); box-shadow: 0 0 15px white; }
-
-        /* Hosting Özel Bölüm */
-        .hosting-hero {
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            padding: 40px;
-            border-radius: 25px;
-            color: black;
-            margin-top: 20px;
+        /* Hosting Plan Tablosu */
+        .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+        .plan-card {
+            background: rgba(0, 210, 255, 0.05); border: 1px solid var(--primary);
+            padding: 20px; border-radius: 20px; text-align: center;
         }
+        .plan-card h4 { font-size: 1.5rem; margin-bottom: 10px; }
+        .plan-card .price { font-size: 1.8rem; font-weight: 900; color: var(--primary); }
+
+        /* Scrollbar */
+        .content::-webkit-scrollbar { width: 5px; }
+        .content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
     </style>
 </head>
 <body>
 
 <div class="bg-animate"></div>
-<div class="glow-sphere"></div>
 
 <div class="app-container">
     <div class="sidebar">
-        <div class="nav-item active" onclick="openTab('home')">🏠 <span>ANA SAYFA</span></div>
-        <div class="nav-item" onclick="openTab('hacks')">⚔️ <span>HACK CLIENTS</span></div>
-        <div class="nav-item" onclick="openTab('mods')">🚀 <span>FPS MODS</span></div>
-        <div class="nav-item" onclick="openTab('hosting')">☁️ <span>HOSTING</span></div>
+        <div class="nav-item active" onclick="openTab('home', this)">🏠 <span>DASHBOARD</span></div>
+        <div class="nav-item" onclick="openTab('hacks', this)">⚔️ <span>HACK CLIENTS</span></div>
+        <div class="nav-item" onclick="openTab('mods', this)">🚀 <span>FPS MODS</span></div>
+        <div class="nav-item" onclick="openTab('hosting', this)">☁️ <span>HOSTING</span></div>
     </div>
 
     <div class="content">
         
         <div id="home" class="tab-content active">
-            <h1>WELCOME <span class="accent-text">TRIGGER</span></h1>
-            <p style="color: #888;">Sistem hazır. Nereden başlamak istersin?</p>
-            
+            <h1>SYSTEM <span class="accent">STATUS</span></h1>
             <div class="glass-card">
                 <div>
-                    <h3>Hızlı İstatistikler</h3>
-                    <p>Ping: <span id="ping" style="color: var(--primary)">12ms</span> | Server Status: ONLINE</p>
+                    <h3>Hoş geldin, Trigger</h3>
+                    <p>Tüm sistemler optimize edildi. Bugün hangi sunucuyu domine edeceksin?</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: var(--success); font-weight: 900;">ONLINE</span><br>
+                    <small id="pingDisplay">Ping: 14ms</small>
+                </div>
+            </div>
+            <div class="glass-card" style="border-left: 4px solid var(--accent);">
+                <div>
+                    <h3>Hızlı Duyuru</h3>
+                    <p>Yeni Doomsday bypass metodu eklendi. Kontrol etmeyi unutma!</p>
                 </div>
             </div>
         </div>
 
         <div id="hacks" class="tab-content">
-            <h1>HACK <span class="accent-text">CLIENTS</span></h1>
+            <h1>HACK <span class="accent">ELITE</span></h1>
             <div class="glass-card">
-                <div>
-                    <h3>DOOMSDAY CLIENT</h3>
-                    <p>En gelişmiş bypass sistemleri.</p>
-                </div>
-                <a href="https://github.com/doomsday-client/doomsday/releases" target="_blank" class="btn-action">ERİŞİM</a>
+                <div><h3>METEOR CLIENT</h3><p>En modern ve modüler hile deneyimi.</p></div>
+                <a href="https://meteorclient.com/" target="_blank" class="btn-action">İNDİR</a>
             </div>
             <div class="glass-card">
-                <div>
-                    <h3>WURST CLIENT</h3>
-                    <p>Klasik hile deneyimi.</p>
-                </div>
-                <a href="https://www.wurstclient.net/download/" target="_blank" class="btn-action">ERİŞİM</a>
+                <div><h3>THUNDERHACK</h3><p>Anarchy sunucuları için en sert vuruşlar.</p></div>
+                <a href="https://github.com/ThunderHack-Recode/ThunderHack-Recode" target="_blank" class="btn-action">İNDİR</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>CATLEAN</h3><p>Optimize edilmiş gizli hile arayüzü.</p></div>
+                <a href="#" class="btn-action">ERİŞİM</a>
             </div>
         </div>
 
         <div id="mods" class="tab-content">
-            <h1>FPS <span class="accent-text">BOOST</span></h1>
+            <h1>ULTIMATE <span class="accent">BOOST</span></h1>
             <div class="glass-card">
-                <div><h3>SODIUM + LITHIUM</h3><p>FPS Değerlerini 3 katına çıkar.</p></div>
-                <a href="https://modrinth.com/mod/sodium" target="_blank" class="btn-action">YÜKLE</a>
+                <div><h3>LITHIUM</h3><p>Oyun içi mantık ve fizik optimizasyonu (Hız kazandırır).</p></div>
+                <a href="https://modrinth.com/mod/lithium" target="_blank" class="btn-action">GET</a>
             </div>
             <div class="glass-card">
-                <div><h3>IRIS SHADERS</h3><p>Kasmayan gölgelendirme.</p></div>
-                <a href="https://modrinth.com/mod/iris" target="_blank" class="btn-action">YÜKLE</a>
+                <div><h3>SODIUM</h3><p>Motor seviyesinde grafik optimizasyonu.</p></div>
+                <a href="https://modrinth.com/mod/sodium" target="_blank" class="btn-action">GET</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>STarlight</h3><p>Işıklandırma motorunu tamamen baştan yazar.</p></div>
+                <a href="https://modrinth.com/mod/starlight" target="_blank" class="btn-action">GET</a>
+            </div>
+            <div class="glass-card">
+                <div><h3>FERRITECORE</h3><p>RAM kullanımını %50'ye kadar azaltır.</p></div>
+                <a href="https://modrinth.com/mod/ferritecore" target="_blank" class="btn-action">GET</a>
             </div>
         </div>
 
         <div id="hosting" class="tab-content">
-            <h1>PREMIUM <span class="accent-text">HOSTING</span></h1>
-            <div class="hosting-hero">
-                <h2>CRAFTHOSTING.COM.TR</h2>
-                <p>Türkiye'nin en hızlı Minecraft sunucuları burada.</p>
-                <br>
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn-action">SUNUCUNU KUR</a>
+            <h1>CRAFTHOSTING <span class="accent">PRO</span></h1>
+            <p>Türkiye'nin en kaliteli sunucu sağlayıcısını ziyaret et.</p>
+            
+            <div class="plan-grid">
+                <div class="plan-card">
+                    <h4>STARTER</h4>
+                    <p class="price">₺149</p>
+                    <p><small>4GB RAM / Ryzen 9</small></p>
+                </div>
+                <div class="plan-card" style="border-width: 3px; transform: scale(1.05); background: rgba(0, 210, 255, 0.1);">
+                    <h4 class="accent">GAMER</h4>
+                    <p class="price">₺299</p>
+                    <p><small>8GB RAM / NVMe SSD</small></p>
+                </div>
+                <div class="plan-card">
+                    <h4>ULTIMATE</h4>
+                    <p class="price">₺549</p>
+                    <p><small>16GB RAM / %100 Uptime</small></p>
+                </div>
             </div>
+            
+            <center style="margin-top: 30px;">
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn-action" style="background: var(--primary); padding: 20px 50px;">SİTEYİ ZİYARET ET</a>
+            </center>
         </div>
 
     </div>
 </div>
 
 <script>
-    function openTab(tabId) {
-        // Tüm içerikleri gizle
+    function openTab(tabId, element) {
         const tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => tab.classList.remove('active'));
         
-        // Tüm navigasyon butonlarını pasif yap
         const navs = document.querySelectorAll('.nav-item');
         navs.forEach(nav => nav.classList.remove('active'));
         
-        // Seçilen tabı göster
         document.getElementById(tabId).classList.add('active');
-        
-        // Tıklanan butonu aktif yap (basit mantıkla)
-        event.currentTarget.classList.add('active');
+        element.classList.add('active');
     }
 
-    // Canlı Ping Efekti
     setInterval(() => {
-        const p = Math.floor(Math.random() * 5) + 10;
-        document.getElementById('ping').innerText = p + 'ms';
+        const p = Math.floor(Math.random() * 4) + 12;
+        document.getElementById('pingDisplay').innerText = 'Ping: ' + p + 'ms';
     }, 2000);
 </script>
 
