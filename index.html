@@ -3,108 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIGGER | CRAFTHOSTİNG</title>
+    <title>TRIGGER HUB | PRO EDITION</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Plus+Jakarta+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #020617;
-            --card-glass: rgba(15, 23, 42, 0.7);
+            --card-glass: rgba(15, 23, 42, 0.8);
             --primary: #38bdf8;
-            --accent: #f43f5e;
+            --accent: #8b5cf6;
             --success: #10b981;
-            --neon-glow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        body { 
-            background-color: var(--bg-deep); 
-            color: #f8fafc; 
-            overflow: hidden; 
-            background-image: radial-gradient(circle at top right, rgba(56,189,248,0.1), transparent 40%);
-        }
+        body { background: var(--bg-deep); color: #f8fafc; overflow: hidden; height: 100vh; }
 
         .layout { display: flex; height: 100vh; }
 
-        /* Sidebar Navigation */
+        /* Sidebar */
         .sidebar {
-            width: 90px;
-            background: rgba(2, 6, 23, 0.9);
-            border-right: 1px solid rgba(56, 189, 248, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
-            transition: width 0.3s ease;
-            z-index: 100;
+            width: 80px; background: rgba(2, 6, 23, 0.95); border-right: 1px solid rgba(56, 189, 248, 0.2);
+            display: flex; flex-direction: column; align-items: center; padding: 25px 0; transition: 0.3s; z-index: 100;
         }
-
         .sidebar:hover { width: 220px; }
-
         .nav-btn {
-            width: 80%; height: 50px; margin-bottom: 15px;
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.3s; position: relative; color: #94a3b8;
+            width: 50px; height: 50px; margin-bottom: 20px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s; position: relative; color: #64748b;
         }
+        .sidebar:hover .nav-btn { width: 85%; justify-content: flex-start; padding-left: 15px; }
+        .nav-btn span { position: absolute; left: 60px; opacity: 0; font-weight: 800; white-space: nowrap; transition: 0.2s; }
+        .sidebar:hover .nav-btn span { opacity: 1; }
+        .nav-btn.active { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
 
-        .nav-btn span { position: absolute; left: 70px; opacity: 0; font-weight: 800; white-space: nowrap; transition: 0.3s; }
-        .sidebar:hover .nav-btn span { opacity: 1; color: white; }
-        
-        .nav-btn.active { background: var(--primary); color: #000; box-shadow: var(--neon-glow); }
-        .nav-btn.danger { border: 1px solid var(--accent); color: var(--accent); }
-        .nav-btn.danger.active { background: var(--accent); color: white; box-shadow: 0 0 15px rgba(244, 63, 94, 0.4); }
-
-        /* Main Content Area */
-        .content {
-            flex: 1; padding: 30px; overflow-y: auto; scroll-behavior: smooth;
-        }
-
-        .content::-webkit-scrollbar { width: 6px; }
-        .content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        .tab { display: none; animation: fadeIn 0.4s ease; }
+        /* Main Content */
+        .content { flex: 1; padding: 40px; overflow-y: auto; background-image: radial-gradient(circle at 50% -20%, #1e293b, transparent); }
+        .tab { display: none; animation: fadeInUp 0.5s ease; }
         .tab.active-tab { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
-        .hl { color: var(--primary); }
+        h1 { font-family: 'Orbitron'; font-size: 2.2rem; margin-bottom: 10px; letter-spacing: 2px; }
+        .subtitle { color: #94a3b8; margin-bottom: 35px; font-size: 1rem; }
 
-        /* Grid & Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        
+        /* Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card {
             background: var(--card-glass); border: 1px solid rgba(255,255,255,0.05);
-            padding: 25px; border-radius: 16px; backdrop-filter: blur(12px);
-            transition: 0.3s; position: relative; overflow: hidden;
+            padding: 25px; border-radius: 20px; backdrop-filter: blur(10px); transition: 0.3s;
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        
-        .card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--primary); margin-bottom: 10px; }
-        .card p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; }
+        .card:hover { border-color: var(--primary); transform: scale(1.02); }
+        .card h3 { color: var(--primary); font-family: 'Orbitron'; margin-bottom: 12px; font-size: 1.1rem; }
 
+        /* Tools */
+        .tool-input {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #334155;
+            background: #0f172a; color: white; margin-bottom: 15px; outline: none;
+        }
         .btn {
-            display: inline-block; padding: 10px 20px; background: white; color: black;
-            text-decoration: none; border-radius: 8px; font-weight: 800; transition: 0.3s;
-            border: none; cursor: pointer; text-transform: uppercase; font-size: 0.8rem;
+            padding: 12px 24px; background: var(--primary); color: #000; border: none;
+            border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.3s; width: 100%;
+            text-transform: uppercase; font-size: 0.85rem;
         }
-        .btn:hover { background: var(--primary); box-shadow: var(--neon-glow); }
+        .btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px var(--primary); }
 
-        /* Termux/Terminal Simulator */
-        .terminal {
-            background: #000; border-radius: 12px; padding: 20px; font-family: monospace;
-            color: var(--success); font-size: 0.85rem; border: 1px solid #1e293b; margin-top: 15px;
+        /* Sponsor Section */
+        .sponsor-hero {
+            background: linear-gradient(90deg, #0f172a, #1e293b); border: 2px solid var(--primary);
+            padding: 30px; border-radius: 24px; display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 40px;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .layout { flex-direction: column; }
-            .sidebar { width: 100%; height: 70px; flex-direction: row; justify-content: space-around; padding: 0; border-right: none; border-top: 1px solid rgba(56, 189, 248, 0.2); order: 2; }
+            .sidebar { width: 100%; height: 65px; position: fixed; bottom: 0; flex-direction: row; border-right: none; border-top: 1px solid rgba(56, 189, 248, 0.2); }
             .sidebar:hover { width: 100%; }
-            .nav-btn { width: 50px; height: 50px; margin: 0; }
-            .nav-btn span { display: none; }
-            .content { order: 1; padding: 20px; padding-bottom: 90px; }
-            h1 { font-size: 1.8rem; }
+            .nav-btn { margin-bottom: 0; }
+            .content { padding: 20px; padding-bottom: 100px; }
         }
     </style>
 </head>
@@ -112,108 +84,88 @@
 
 <div class="layout">
     <nav class="sidebar">
-        <div class="nav-btn active" onclick="switchTab('dashboard', this)">🏠 <span>DASHBOARD</span></div>
-        <div class="nav-btn" onclick="switchTab('hacks', this)">⚔️ <span>CLIENTS</span></div>
-        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODS & FPS</span></div>
-        <div class="nav-btn danger" onclick="switchTab('bot', this)">🔥 <span>BOT ENGINE</span></div>
-        <div class="nav-btn" onclick="switchTab('sponsor', this)">💎 <span>CRAFTHOSTING</span></div>
+        <div class="nav-btn active" onclick="switchTab('home', this)">🏠 <span>DASHBOARD</span></div>
+        <div class="nav-item-sep" style="height: 1px; width: 50%; background: rgba(255,255,255,0.1); margin-bottom: 15px;"></div>
+        <div class="nav-btn" onclick="switchTab('tools', this)">🛠️ <span>TOOLS</span></div>
+        <div class="nav-btn" onclick="switchTab('clients', this)">⚔️ <span>CLIENTS</span></div>
+        <div class="nav-btn" onclick="switchTab('mods', this)">🚀 <span>MODS</span></div>
+        <div class="nav-btn" onclick="switchTab('host', this)">☁️ <span>HOSTING</span></div>
     </nav>
 
     <main class="content">
-        
-        <div id="dashboard" class="tab active-tab">
-            <h1>WELCOME <span class="hl">TRIGGERBABA</span></h1>
-            <div class="grid">
-                <div class="card" style="border-left: 4px solid var(--success);">
-                    <h3>System Overview</h3>
-                    <p>Cihaz Performansı: Optimal</p>
-                    <p>Ağ Gecikmesi: <strong style="color:var(--success)">12ms</strong></p>
-                    <p>Aktif Proxy: 4,501 (Rotasyon Açık)</p>
+        <div id="home" class="tab active-tab">
+            <div class="sponsor-hero">
+                <div>
+                    <h2 style="font-family: 'Orbitron';">CRAFTHOSTING <span style="color:var(--primary)">PARTNER</span></h2>
+                    <p>Yüksek performanslı Ryzen 9 sunucularda %20 indirim fırsatını kaçırma.</p>
                 </div>
-                <div class="card" style="border-left: 4px solid var(--primary);">
-                    <h3>Quick Launch</h3>
-                    <p>Sunucu test araçları ve enjekte edilebilir clientlar yüklenmeyi bekliyor.</p>
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="width: auto;">SİTEYE GİT</a>
+            </div>
+            <h1>SYSTEM <span style="color:var(--primary)">OVERVIEW</span></h1>
+            <p class="subtitle">Hoş geldin, TriggerBaba. Tüm modlar ve araçlar hazır.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Network Status</h3>
+                    <p>Bağlantı: <span style="color:var(--success)">Stabil</span></p>
+                    <p>Gecikme: 14ms</p>
+                </div>
+                <div class="card">
+                    <h3>Active Projects</h3>
+                    <p>Web Build: V4.0.0</p>
+                    <p>Minecraft Modpack: Optimized</p>
                 </div>
             </div>
         </div>
 
-        <div id="hacks" class="tab">
-            <h1>ELITE <span class="hl">CLIENTS</span></h1>
+        <div id="tools" class="tab">
+            <h1>SERVER <span style="color:var(--primary)">TOOLS</span></h1>
+            <p class="subtitle">Sunucuları analiz et ve durumlarını kontrol et.</p>
             <div class="grid">
                 <div class="card">
-                    <h3>ThunderHack Recode</h3><p>Anarchy sunucuları ve sert PvP için.</p>
-                    <a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn">İNDİR</a>
+                    <h3>Server Status Checker</h3>
+                    <input type="text" class="tool-input" placeholder="Sunucu IP Adresi (örn: play.hypixel.net)">
+                    <button class="btn" onclick="alert('Sunucu verileri çekiliyor...')">SORGULA</button>
+                    <div id="res" style="margin-top:15px; font-size: 0.85rem; color: var(--success); font-family: monospace;"></div>
                 </div>
                 <div class="card">
-                    <h3>Doomsday Client</h3><p>Özel bypass modülleri.</p>
-                    <a href="https://doomsdayclient.com/" class="btn">İNDİR</a>
+                    <h3>Ping Tester</h3>
+                    <p>Farklı lokasyonlardan erişim hızını test et.</p>
+                    <button class="btn" style="margin-top:20px;">TESTİ BAŞLAT</button>
                 </div>
-                <div class="card">
-                    <h3>Meteor Client</h3><p>Arayüzü en temiz, modüler hile.</p>
-                    <a href="https://meteorclient.com/" class="btn">İNDİR</a>
-                </div>
-                <div class="card">
-                    <h3>Wurst</h3><p>Klasik, her sürümde çalışan güç.</p>
-                    <a href="https://www.wurstclient.net/download/" class="btn">İNDİR</a>
-                </div>
+            </div>
+        </div>
+
+        <div id="clients" class="tab">
+            <h1>ELITE <span style="color:var(--primary)">CLIENTS</span></h1>
+            <div class="grid">
+                <div class="card"><h3>ThunderHack</h3><p>Anarchy & PvP Master.</p><a href="https://github.com/Pan4ur/ThunderHack-Recode/releases" class="btn">İNDİR</a></div>
+                <div class="card"><h3>Meteor</h3><p>En popüler açık kaynak hile.</p><a href="https://meteorclient.com/" class="btn">İNDİR</a></div>
+                <div class="card"><h3>Doomsday</h3><p>Gelişmiş teknik özellikler.</p><a href="https://doomsdayclient.com/" class="btn">İNDİR</a></div>
             </div>
         </div>
 
         <div id="mods" class="tab">
-            <h1>ULTIMATE <span class="hl">ARCHIVE</span></h1>
+            <h1>MODRINTH <span style="color:var(--primary)">FPS BOOSTER</span></h1>
             <div class="grid">
-                <div class="card"><h3>Sodium</h3><p>Maksimum FPS artışı.</p><a href="https://modrinth.com/mod/sodium" class="btn">GET</a></div>
-                <div class="card"><h3>Lithium</h3><p>Oyun fiziği optimizasyonu.</p><a href="https://modrinth.com/mod/lithium" class="btn">GET</a></div>
-                <div class="card"><h3>Krypton</h3><p>Ağ paket optimizasyonu (Düşük Ping).</p><a href="https://modrinth.com/mod/krypton" class="btn">GET</a></div>
-                <div class="card"><h3>ViaFabric</h3><p>Tüm sunucu sürümlerine bağlan.</p><a href="https://modrinth.com/mod/viafabric" class="btn">GET</a></div>
-                <div class="card"><h3>EntityCulling</h3><p>Görünmeyenleri render etmez (Sıfır Kasma).</p><a href="https://modrinth.com/mod/entityculling" class="btn">GET</a></div>
-                <div class="card"><h3>Packet Fixer</h3><p>Saldırı esnasında bağlantı kopmasını engeller.</p><a href="https://modrinth.com/mod/packet-fixer" class="btn">GET</a></div>
+                <div class="card"><h3>Sodium</h3><p>Dünyanın en iyi FPS modu.</p><a href="https://modrinth.com/mod/sodium" class="btn">GET</a></div>
+                <div class="card"><h3>Krypton</h3><p>Ping ve ağ optimizasyonu.</p><a href="https://modrinth.com/mod/krypton" class="btn">GET</a></div>
+                <div class="card"><h3>Lithium</h3><p>Sunucu/Client fizik hızlandırma.</p><a href="https://modrinth.com/mod/lithium" class="btn">GET</a></div>
+                <div class="card"><h3>FerriteCore</h3><p>RAM kullanımını yarıya indirir.</p><a href="https://modrinth.com/mod/ferritecore" class="btn">GET</a></div>
             </div>
         </div>
 
-        <div id="bot" class="tab">
-            <h1 style="color: var(--accent);">STRESS <span style="color: white;">CONTROLLER</span></h1>
-            <div class="grid">
-                <div class="card" style="border-color: var(--accent);">
-                    <h3 style="color: var(--accent);">Termux / Node.js Engine</h3>
-                    <p>Cihaz üzerinden yerel testleri başlatmak için komut satırı arayüzü.</p>
-                    <div class="terminal">
-                        ~ $ pkg install nodejs<br>
-                        ~ $ npm install mineflayer<br>
-                        ~ $ node server.js --target=localhost --bot=1000<br>
-                        <span style="color: #64748b;">[!] Proxy list loaded successfully...</span>
-                    </div>
-                    <button class="btn" style="background: var(--accent); color: white; margin-top: 15px;" onclick="alert('Stress testi simülasyonu başlatıldı!')">SALDIRIYI BAŞLAT</button>
+        <div id="host" class="tab">
+            <h1>PREMIUM <span style="color:var(--primary)">HOSTING</span></h1>
+            <div class="card" style="text-align: center;">
+                <h2 style="font-family:'Orbitron'; margin-bottom: 20px;">CRAFTHOSTING.COM.TR</h2>
+                <p>Türkiye'nin en iyi sunucu koruması ve performansı.</p>
+                <div class="grid" style="margin: 30px 0;">
+                    <div class="card"><h4>Ryzen 9 7950X</h4><p>Rakipsiz Güç</p></div>
+                    <div class="card"><h4>2.5 TBPS</h4><p>DDoS Koruması</p></div>
                 </div>
-                <div class="card">
-                    <h3>Payload Config</h3>
-                    <p>Otomatik kayıt ve rastgele hareket modülleri.</p>
-                    <div class="terminal" style="color: #38bdf8;">
-                        bot.chat('/register trigger trigger');<br>
-                        bot.setControlState('forward', true);
-                    </div>
-                </div>
+                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="width: 200px;">Hemen İncele</a>
             </div>
         </div>
-
-        <div id="sponsor" class="tab">
-            <h1>OFFICIAL <span class="hl">SPONSOR</span></h1>
-            <div class="card" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(56,189,248,0.1)); border: 1px solid var(--primary);">
-                <div style="text-align: center; padding: 20px;">
-                    <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 10px;">CRAFTHOSTING</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Türkiye'nin en dayanıklı, en hızlı ve DDoS korumalı sunucuları.</p>
-                    
-                    <div class="grid" style="margin-bottom: 30px; text-align: left;">
-                        <div class="card" style="background: rgba(0,0,0,0.5);"><h3>🔥 Ryzen 9 Gücü</h3><p>Maksimum TPS garantisi.</p></div>
-                        <div class="card" style="background: rgba(0,0,0,0.5);"><h3>🛡️ Anti-DDoS</h3><p>Bot saldırılarına karşı dev zırh.</p></div>
-                        <div class="card" style="background: rgba(0,0,0,0.5);"><h3>⚡ NVMe SSD</h3><p>Gecikmesiz chunk yüklemeleri.</p></div>
-                    </div>
-
-                    <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn" style="padding: 15px 40px; font-size: 1.2rem;">SUNUCUNU ŞİMDİ KUR</a>
-                </div>
-            </div>
-        </div>
-
     </main>
 </div>
 
@@ -221,7 +173,6 @@
     function switchTab(tabId, element) {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active-tab'));
         document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active-tab');
         element.classList.add('active');
     }
