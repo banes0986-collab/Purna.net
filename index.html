@@ -3,139 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trigger Dashboard | Minecraft Hub</title>
+    <title>TRIGGER & CRAFTHOSTİNG| MINECRAFT ULTIMATE</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-color: #f8fafc;
-            --secondary-text: #94a3b8;
+            --bg-deep-blue: #020617;
+            --card-blue: #0f172a;
+            --accent-neon: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #10b981;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep-blue);
+            color: var(--text-main);
             margin: 0;
-            display: flex;
+            line-height: 1.6;
         }
 
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: var(--card-bg);
-            padding: 20px;
-            position: fixed;
-            border-right: 1px solid #334155;
+        /* Büyük ve Özel Başlık Alanı */
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #1e293b, var(--bg-deep-blue));
+            border-bottom: 2px solid var(--accent-neon);
         }
 
-        .sidebar h2 { color: var(--accent-color); font-size: 1.5rem; }
-        .nav-links { list-style: none; padding: 0; }
-        .nav-links li { padding: 12px 0; border-bottom: 1px solid #334155; cursor: pointer; transition: 0.3s; }
-        .nav-links li:hover { color: var(--accent-color); padding-left: 10px; }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 290px;
-            padding: 40px;
-            width: 100%;
+        header h1 {
+            font-size: 4rem; /* Çok büyük yazı */
+            margin: 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--accent-neon);
         }
 
-        .grid-container {
+        /* Ping Göstergesi */
+        .ping-container {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-neon);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.3s ease;
+            background-color: var(--card-blue);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #1e293b;
+            transition: all 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
-        .card h3 { margin-top: 0; color: var(--accent-color); }
-        .card p { color: var(--secondary-text); font-size: 0.9rem; }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
+        .card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            color: var(--accent-neon);
+            margin-bottom: 20px;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-list li {
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-download {
+            background: var(--accent-neon);
             color: #000;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 8px 15px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* CraftHosting Özel Alanı */
+        .promo-banner {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            color: #000;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .promo-banner a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        code {
+            display: block;
+            background: #000;
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--success);
             margin-top: 10px;
-        }
-
-        .host-card {
-            background: linear-gradient(135deg, #1e293b 0%, #38bdf8 100%);
-            color: white;
-        }
-        
-        .host-card h3, .host-card p { color: white; }
-        .host-card .btn { background-color: white; color: #000; }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { position: relative; width: 100%; height: auto; border-right: none; }
-            .main-content { margin-left: 0; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <h2>HUB DASHBOARD</h2>
-        <ul class="nav-links">
-            <li>Kullanıcı Paneli</li>
-            <li>Hileli Clientlar</li>
-            <li>FPS Modları</li>
-            <li>PvP Araçları</li>
-            <li>Sunucu Kiralama</li>
-        </ul>
+<header>
+    <h1>TRIGGER HUB</h1>
+    <div class="ping-container">
+        SİSTEM DURUMU: <span style="color: var(--success);">AKTİF</span> | GECİKMEYE: <span id="pingText">--</span>ms
+    </div>
+</header>
+
+<div class="container">
+    <div class="promo-banner">
+        🚀 KENDİ SUNUCUNU MU KURMAK İSTİYORSUN? <a href="https://www.crafthosting.com.tr/" target="_blank">CRAFTHOSTING İLE HEMEN BAŞLA!</a>
     </div>
 
-    <div class="main-content">
-        <h1>Hoş Geldin, Oyuncu!</h1>
-        <p style="color: var(--secondary-text)">İhtiyacın olan tüm araçlar tek bir panelde.</p>
-
-        <div class="grid-container">
-            <div class="card">
-                <h3>Hileli Clientlar</h3>
-                <p>Wurst, Doomsday ve daha fazlası. En güncel sürümler burada.</p>
-                <a href="#" class="btn">Görüntüle</a>
-            </div>
-
-            <div class="card">
-                <h3>FPS Optimizasyon</h3>
-                <p>Sodium, Lithium ve Iris Modları. Maksimum performans için gerekli linkler.</p>
-                <a href="#" class="btn">Modları İndir</a>
-            </div>
-
-            <div class="card">
-                <h3>PvP & Armor</h3>
-                <p>Feather Client, Lunar Client ve gelişmiş HUD kodları. PvP taktikleri rehberi.</p>
-                <a href="#" class="btn">Rehbere Git</a>
-            </div>
-
-            <div class="card host-card">
-                <h3>Kendi Sunucunu Kur!</h3>
-                <p>Minecraft sunucusu mu almak istiyorsun? O zaman bizi dene!</p>
-                <a href="https://www.crafthosting.com.tr/" target="_blank" class="btn">CraftHosting'e Git</a>
-            </div>
-        </div>
-
-        <h2 style="margin-top: 40px;">HUD Özelleştirme Kodları</h2>
+    <div class="grid">
         <div class="card">
-            <code style="color: #10b981;">// Örnek Armor HUD Kodu: {position: "bottom_left", scale: 1.2, showDurability: true}</code>
-            <p>Bu kodu ilgili modun config dosyasına yapıştırarak ekranını özelleştirebilirsin.</p>
+            <h2>Hacking Clients</h2>
+            <ul class="link-list">
+                <li>
+                    <span>Doomsday Client</span>
+                    <a href="https://github.com/doomsday-client/doomsday/releases" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+                <li>
+                    <span>Wurst Client</span>
+                    <a href="https://www.wurstclient.net/download/" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+                <li>
+                    <span>Meteor Client</span>
+                    <a href="https://meteorclient.com/" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>FPS Modları (Fabric)</h2>
+            <ul class="link-list">
+                <li>
+                    <span>Sodium (FPS Boost)</span>
+                    <a href="https://modrinth.com/mod/sodium" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+                <li>
+                    <span>Lithium (Game Logic)</span>
+                    <a href="https://modrinth.com/mod/lithium" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+                <li>
+                    <span>Iris Shaders</span>
+                    <a href="https://modrinth.com/mod/iris" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>PvP Essentials</h2>
+            <ul class="link-list">
+                <li>
+                    <span>Feather Client</span>
+                    <a href="https://feathermc.com/" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+                <li>
+                    <span>Lunar Client</span>
+                    <a href="https://www.lunarclient.com/" target="_blank" class="btn-download">İNDİR</a>
+                </li>
+            </ul>
+            <p>Özel Armor HUD Kodu:</p>
+            <code>/hud layout load TriggerArmorHUD</code>
         </div>
     </div>
+</div>
+
+<script>
+    // Basit bir Ping Simülasyonu
+    setInterval(() => {
+        const ping = Math.floor(Math.random() * (35 - 15 + 1) + 15);
+        document.getElementById('pingText').innerText = ping;
+    }, 2000);
+</script>
 
 </body>
 </html>
