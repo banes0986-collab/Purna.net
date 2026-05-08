@@ -3,225 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoxMining | Sınırları Zorla</title>
-    <meta name="description" content="BoxMining Minecraft Sunucusu - Lagsız, keyifli ve kaliteli survival deneyimi!">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #f1c40f;
-            --secondary: #e67e22;
-            --dark: #0f0f0f;
-            --card: #1a1a1a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-            color: #eee;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1611996575749-79a3ae8e0c9d?w=1920') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .header-content h1 {
-            font-size: 4.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, var(--primary), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        .header-content p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .ip-box {
-            background: var(--primary);
-            color: #000;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(241, 196, 15, 0.4);
-        }
-
-        .ip-box:hover {
-            transform: scale(1.08) translateY(-5px);
-            background: #fff;
-            box-shadow: 0 15px 40px rgba(241, 196, 15, 0.6);
-        }
-
-        .section {
-            padding: 80px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            color: var(--primary);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--card);
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-
-        .card:hover {
-            transform: translateY(-15px) scale(1.03);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(241, 196, 15, 0.15);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin: 15px 0;
-            color: #fff;
-        }
-
-        .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #2ecc71;
-            margin: 15px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #0a0a0a;
-            color: #666;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(241, 196, 15, 0.5); }
-            to { text-shadow: 0 0 40px rgba(241, 196, 15, 0.8); }
-        }
-    </style>
+    <title>TriggerBabaa | BoxMining Elite</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Arka Plan Görseli/Katmanı -->
+    <div class="main-bg"></div>
+
+    <!-- Üst Menü -->
     <header>
-        <div class="header-content">
-            <h1>BOXMINING</h1>
-            <p>Lagsız • Kaliteli • Eğlenceli Minecraft Deneyimi</p>
-            <div class="ip-box" onclick="copyIP()">
-                <i class="fas fa-server"></i> 89.47.113.47:25573
+        <div class="nav-container">
+            <div class="menu-trigger" onclick="openNav()"><i class="fas fa-th-large"></i></div>
+            <div class="logo">BOX<span>MINING</span></div>
+            <div class="online-status">
+                <span class="dot"></span> 89.47.113.47:25573
             </div>
         </div>
     </header>
 
-    <div class="section">
-        <h2 class="section-title">💎 VIP Üyelikler</h2>
-        <div class="grid">
-            <div class="card"><h3>VIP</h3><div class="price">50 TL</div></div>
-            <div class="card"><h3>VIP+</h3><div class="price">70 TL</div></div>
-            <div class="card"><h3>LVIP</h3><div class="price">80 TL</div></div>
-            <div class="card"><h3>LVIP+</h3><div class="price">110 TL</div></div>
+    <!-- Yan Panel -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="side-links">
+            <button onclick="changePage('home')"><i class="fas fa-home"></i> Başlangıç</button>
+            <hr>
+            <button onclick="changePage('market', 'vips')"><i class="fas fa-crown"></i> VIP Üyelik</button>
+            <button onclick="changePage('market', 'kits')"><i class="fas fa-box-open"></i> Özel Kitler</button>
+            <button onclick="changePage('market', 'swords')"><i class="fas fa-khanda"></i> Kılıçlar</button>
         </div>
     </div>
 
-    <div class="section">
-        <h2 class="section-title">📦 Özel Kitler</h2>
-        <div class="grid">
-            <div class="card"><h3>Warden Kit</h3><div class="price">20 TL</div></div>
-            <div class="card"><h3>Creeper Kit</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Shulker Kit</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Piglin Kit</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Ghast Kit</h3><div class="price">5 TL</div></div>
-            <div class="card"><h3>Büyücü Kit</h3><div class="price">5 TL</div></div>
+    <!-- İçerik Alanı -->
+    <main id="content">
+        <!-- Anasayfa Bölümü -->
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <h1 class="glitch" data-text="BOXMINING">BOXMINING</h1>
+                <p>Türkiye'nin en teknolojik ve adaletli BoxMining dünyasına hoş geldin!</p>
+                <div class="hero-btns">
+                    <button class="btn-main" onclick="changePage('market', 'vips')">Markete Göz At</button>
+                    <button class="btn-sub" onclick="scrollToRegister()">Kayıt Ol</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><h3>%100</h3><p>Hile Koruması</p></div>
+                <div class="stat-card"><h3>0.1ms</h3><p>Düşük Ping</p></div>
+                <div class="stat-card"><h3>7/24</h3><p>Aktif Destek</p></div>
+            </div>
+
+            <div class="register-area" id="register">
+                <div class="glass-box">
+                    <h2><i class="fas fa-id-card"></i> Sunucuya Kaydol</h2>
+                    <div class="input-row">
+                        <input type="text" id="username" placeholder="Minecraft Kullanıcı Adı">
+                        <input type="password" id="password" placeholder="Şifreniz">
+                    </div>
+                    <button class="btn-submit">SİSTEME BAĞLAN</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Bölümü -->
+        <section id="market" class="page">
+            <h2 class="section-title">BOXMINING <span id="cat-label">MARKET</span></h2>
+            <div id="product-grid" class="product-grid">
+                <!-- Ürünler Buraya Gelecek -->
+            </div>
+        </section>
+    </main>
+
+    <!-- SATIN ALMA MODAL (POPUP) -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <i class="fab fa-discord fa-4x" style="color: #5865F2;"></i>
+            <h2>Ürün Satın Alma</h2>
+            <p id="modal-item-name">Ürün İsmi</p>
+            <div class="alert-box">
+                Bu ürünü satın almak için lütfen Discord sunucumuz üzerinden <strong>talep (ticket)</strong> açınız.
+            </div>
+            <p class="dc-link">Discord Linki: <span>YAKINDA!</span></p>
+            <button class="btn-submit" onclick="closeModal()">Anladım</button>
         </div>
     </div>
 
-    <div class="section">
-        <h2 class="section-title">✨ Tılsımlar (Charm)</h2>
-        <div class="grid">
-            <div class="card"><h3>Kuvvet Charm</h3><div class="price">15 TL</div></div>
-            <div class="card"><h3>Hız I Charm</h3><div class="price">5 TL</div></div>
-            <div class="card"><h3>Hız II Charm</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Acele Charm</h3><div class="price">5 TL</div></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">⚔️ Efsanevi Kılıçlar</h2>
-        <div class="grid">
-            <div class="card"><h3>Warden Kılıç</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Creeper Kılıç</h3><div class="price">10 TL</div></div>
-            <div class="card"><h3>Shulker Kılıç</h3><div class="price">5 TL</div></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">🗝️ Özel Kasalar</h2>
-        <div class="grid">
-            <div class="card"><h3>VIP Kasası</h3><div class="price">200 TL</div></div>
-            <div class="card"><h3>Kit Kasası</h3><div class="price">35 TL</div></div>
-            <div class="card"><h3>Alet Kasası</h3><div class="price">15 TL</div></div>
-            <div class="card"><h3>Oy Kasası</h3><div class="price">5 TL</div></div>
-        </div>
-    </div>
-
-    <footer>
-        <p><strong>BoxMining Sunucusu</strong> © 2026 - Tüm hakları saklıdır.</p>
-        <p>IP: 89.47.113.47:25573</p>
-    </footer>
-
-    <script>
-        function copyIP() {
-            navigator.clipboard.writeText("89.47.113.47:25573");
-            const ipBox = document.querySelector('.ip-box');
-            const originalText = ipBox.innerHTML;
-            ipBox.innerHTML = '✅ Kopyalandı!';
-            setTimeout(() => {
-                ipBox.innerHTML = originalText;
-            }, 2000);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
