@@ -1,64 +1,79 @@
-// Sunucu Durumu (API)
-async function checkServer() {
-    const ip = "legacynw.craftmc.com.tr";
-    try {
-        const res = await fetch(`https://api.mcstatus.io/v2/status/java/${ip}`);
-        const data = await res.json();
-        const statusText = document.getElementById('status-text');
-        const statusDisplay = document.getElementById('status-display');
-        
-        if(data.online) {
-            statusText.innerHTML = "<span style='color:#4cd137'>● SUNUCU AKTİF</span>";
-            statusDisplay.innerText = data.players.online + " / " + data.players.max;
-        } else {
-            statusText.innerHTML = "<span style='color:#e84118'>● RESTARTLANIYOR</span>";
-            statusDisplay.innerText = "KAPALI";
-        }
-    } catch(e) {}
+// Sunucu API Bağlantısı
+async function updateStatus() {
+    const res = await fetch(`https://api.mcstatus.io/v2/status/java/legacynw.craftmc.com.tr`);
+    const data = await res.json();
+    document.getElementById('status-text').innerText = data.online ? "● AKTİF" : "● RESTARTTA";
+    document.getElementById('s-players').innerText = data.online ? `${data.players.online}/${data.players.max}` : "0/0";
 }
-setInterval(checkServer, 30000); checkServer();
+setInterval(updateStatus, 30000); updateStatus();
 
-// Giriş Sistemi
-function handleLogin() {
-    const u = document.getElementById('l-user').value;
-    const p = document.getElementById('l-pass').value;
-
-    if(u === "triggerbabaa" && p === "resul3163") {
-        const admin = {username: "triggerbabaa", rank: "KURUCU", balance: "∞"};
-        localStorage.setItem('currentUser', JSON.stringify(admin));
-        window.location.href = 'dashboard.html';
-    } else {
-        const saved = localStorage.getItem('user_' + u);
-        if(saved) {
-            const data = JSON.parse(saved);
-            if(data.password === p) {
-                localStorage.setItem('currentUser', JSON.stringify(data));
-                window.location.href = 'dashboard.html';
-            } else { alert("Şifre yanlış!"); }
-        } else { alert("Kullanıcı bulunamadı!"); }
-    }
+// BAKİYE SİSTEMİ (LocalStorage üzerinden gerçekçi simülasyon)
+function loadUserData() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if(!user) return window.location.href = 'index.html';
+    
+    // Verileri ekrana bas
+    document.getElementById('user-display').innerText = user.username;
+    document.getElementById('welcome-name').innerText = user.username;
+    document.getElementById('u-balance').innerText = user.balance + " TL";
+    document.getElementById('u-rank').innerText = user.rank;
+    
+    if(user.rank === 'KURUCU') document.getElementById('admin-menu').classList.remove('hidden');
+    loadLogs();
 }
 
-function handleRegister() {
-    const u = document.getElementById('r-user').value;
-    const p = document.getElementById('r-pass').value;
-    if(!u || !p) return alert("Doldur!");
-    const userData = { username: u, password: p, balance: 0, rank: 'OYUNCU' };
-    localStorage.setItem('user_' + u, JSON.stringify(userData));
-    alert("Kayıt başarılı! Giriş yap.");
-    switchAuth('login');
+// ADMIN: Bakiye Ekleme
+function adminAddBalance() {
+    const target = document.getElementById('target-user').value;
+    const amount = parseInt(document.getElementById('target-amt').value);
+    
+    if(!target || !amount) return alert("Bilgileri gir kanka!");
+    
+    let targetData = JSON.parse(localStorage.getItem('user_' + target));
+    if(!targetData) return alert("Oyuncu bulunamadı!");
+    
+    targetData.balance += amount;
+    localStorage.setItem('user_' + target, JSON.stringify(targetData));
+    alert(`${target} adlı oyuncuya ${amount} TL eklendi!`);
 }
 
-function switchAuth(t) {
-    document.getElementById('login-form').classList.toggle('hidden', t === 'register');
-    document.getElementById('register-form').classList.toggle('hidden', t === 'login');
+// SATIN ALMA & LOG SİSTEMİ
+function buy(itemName, price) {
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    if(user.balance < price) return alert("Bakiyen yetersiz agam, Discord'dan yükle!");
+    
+    user.balance -= price;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    
+    // Log kaydet
+    let logs = JSON.parse(localStorage.getItem('shop_logs')) || [];
+    logs.unshift({ user: user.username, item: itemName, date: new Date().toLocaleString() });
+    localStorage.setItem('shop_logs', JSON.stringify(logs));
+    
+    alert(`${itemName} başarıyla alındı!`);
+    location.reload();
+}
+
+function loadLogs() {
+    let logs = JSON.parse(localStorage.getItem('shop_logs')) || [];
+    let html = "";
+    logs.forEach(log => {
+        html += `<tr><td>${log.user}</td><td>${log.item}</td><td>${log.date}</td></tr>`;
+    });
+    document.getElementById('log-body').innerHTML = html;
 }
 
 function showPage(id) {
-    document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.page-container').forEach(p => p.classList.add('hidden'));
     document.getElementById('page-' + id).classList.remove('hidden');
+    document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
+    document.getElementById('l-' + id).classList.add('active');
+}
+
+function sendTicket() {
+    alert("Talebin başarıyla gönderildi! Yetkililer en kısa sürede inceleyecek.");
+    document.getElementById('t-msg').value = "";
 }
 
 function logout() { localStorage.removeItem('currentUser'); window.location.href = 'index.html'; }
-function adminGiveRank() { alert("Rank başarıyla verildi!"); }
-function buy() { alert("Bakiye yetersiz, Discord'dan talep açın!"); }
+window.onload = loadUserData;
