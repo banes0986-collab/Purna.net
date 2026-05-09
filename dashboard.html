@@ -1,100 +1,47 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>LegacyNW | Yönetim Merkezi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="top-announcement">
-        <marquee>🔥 SEZON 2 BAŞLADI! | LEGACY KASA'DA %20 ŞANS ARTIŞI! | DESTEK İÇİN TICKET AÇMAYI UNUTMAYIN! 🔥</marquee>
+<div id="page-logs" class="page-container hidden">
+    <h2 class="title">Sipariş Yönetimi</h2>
+    <div class="table-wrapper">
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Oyuncu</th>
+                    <th>Ürün</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody id="admin-order-list"></tbody>
+        </table>
     </div>
+</div>
 
-    <nav class="navbar">
-        <div class="nav-left"><span class="nav-brand">LEGACY<span>NW</span></span></div>
-        <div class="nav-center" onclick="copyIP()">IP: legacynw.craftmc.com.tr <i class="fas fa-copy"></i></div>
-        <div class="nav-right">
-            <div class="user-pill"><i class="fas fa-user-circle"></i> <span id="user-display">---</span></div>
-            <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i></button>
-        </div>
-    </nav>
-
-    <div class="main-layout">
-        <aside class="sidebar">
-            <button onclick="showPage('home')" class="side-link active" id="l-home"><i class="fas fa-chart-line"></i> Genel Bakış</button>
-            <button onclick="showPage('market')" class="side-link" id="l-market"><i class="fas fa-shopping-bag"></i> Mağaza</button>
-            <button onclick="showPage('ticket')" class="side-link" id="l-ticket"><i class="fas fa-ticket-alt"></i> Destek Talebi</button>
-            
-            <div class="admin-only hidden" id="admin-menu">
-                <hr style="border: 1px solid #1e272e; margin: 20px 0;">
-                <p style="font-size: 10px; color: #555; margin-left: 15px;">YÖNETİCİ</p>
-                <button onclick="showPage('admin')" class="side-link" id="l-admin"><i class="fas fa-user-shield"></i> Oyuncu & Bakiye</button>
-                <button onclick="showPage('logs')" class="side-link" id="l-logs"><i class="fas fa-list-ul"></i> Satın Alım Kayıtları</button>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <div id="page-home" class="page-container">
-                <div class="welcome-card">
-                    <h1>Hoş geldin, <span id="welcome-name">---</span>!</h1>
-                    <p>Sunucu Durumu: <span id="status-text" class="online">● Yükleniyor...</span></p>
-                </div>
-                <div class="stats-grid">
-                    <div class="s-card"><span>CÜZDAN</span><h2 id="u-balance">0 TL</h2></div>
-                    <div class="s-card"><span>RÜTBE</span><h2 id="u-rank">OYUNCU</h2></div>
-                    <div class="s-card"><span>AKTİF OYUNCU</span><h2 id="s-players">0/0</h2></div>
-                </div>
-                <div class="notice-box">
-                    <h3>📢 Bilgilendirme</h3>
-                    <p>Bakiye yüklemeleri için Discord adresimize gelip 'Bakiye Yükle' kanalını kullanabilirsiniz. Sitedeki fiyatlar günceldir.</p>
-                </div>
-            </div>
-
-            <div id="page-market" class="page-container hidden">
-                <h2 class="title">SUNUCU MAĞAZASI</h2>
-                <div class="category">Kasa Anahtarları</div>
-                <div class="grid">
-                    <div class="shop-card"><h3>Legacy Kasa</h3><p>En Değerli Kasa</p><b>100 TL</b><button onclick="buy('Legacy Kasa', 100)">SATIN AL</button></div>
-                    <div class="shop-card"><h3>Kit Kasa</h3><p>Gelişmiş Kitler</p><b>30 TL</b><button onclick="buy('Kit Kasa', 30)">SATIN AL</button></div>
-                    <div class="shop-card"><h3>VIP Kasa</h3><p>VIP Özel</p><b>15 TL</b><button onclick="buy('VIP Kasa', 15)">SATIN AL</button></div>
-                </div>
-                <div class="category">VIP Paketleri</div>
-                <div class="grid">
-                    <div class="shop-card gold"><h3>LVIP+</h3><p>Sınırsız Yetki</p><b>125 TL</b><button onclick="buy('LVIP+', 125)">SATIN AL</button></div>
-                    <div class="shop-card"><h3>VIP+</h3><p>Ömür Boyu</p><b>55 TL</b><button onclick="buy('VIP+', 55)">SATIN AL</button></div>
-                </div>
-            </div>
-
-            <div id="page-ticket" class="page-container hidden">
-                <h2 class="title">DESTEK TALEBİ</h2>
-                <div class="ticket-box">
-                    <textarea id="t-msg" placeholder="Sorununuzu detaylıca yazın..."></textarea>
-                    <button class="btn-primary" onclick="sendTicket()">Talebi Gönder</button>
-                </div>
-            </div>
-
-            <div id="page-admin" class="page-container hidden">
-                <h2 class="title">OYUNCU YÖNETİMİ</h2>
-                <div class="admin-form">
-                    <input type="text" id="target-user" placeholder="Oyuncu Adı">
-                    <input type="number" id="target-amt" placeholder="Miktar (TL)">
-                    <button onclick="adminAddBalance()">BAKİYE EKLE</button>
-                </div>
-            </div>
-
-            <div id="page-logs" class="page-container hidden">
-                <h2 class="title">SATIN ALIM GEÇMİŞİ</h2>
-                <table class="log-table">
-                    <thead><tr><th>Oyuncu</th><th>Ürün</th><th>Tarih</th></tr></thead>
-                    <tbody id="log-body"></tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-
-    <script src="config.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+<script>
+    // Admin listesini doldurma
+    function loadAdminOrders() {
+        const list = document.getElementById('admin-order-list');
+        if(!list) return;
+        const orders = JSON.parse(localStorage.getItem('all_orders')) || [];
+        list.innerHTML = orders.map(o => `
+            <tr>
+                <td>${o.id}</td>
+                <td>${o.user}</td>
+                <td>${o.item}</td>
+                <td>${o.date}</td>
+                <td><span class="badge ${o.status.toLowerCase()}">${o.status}</span></td>
+                <td><button onclick="approveOrder('${o.id}')" class="btn-approve">ONAYLA</button></td>
+            </tr>
+        `).join('');
+    }
+    
+    function approveOrder(id) {
+        let orders = JSON.parse(localStorage.getItem('all_orders'));
+        let order = orders.find(o => o.id === id);
+        if(order) order.status = 'TAMAMLANDI';
+        localStorage.setItem('all_orders', JSON.stringify(orders));
+        loadAdminOrders();
+    }
+    
+    setInterval(loadAdminOrders, 2000);
+</script>
