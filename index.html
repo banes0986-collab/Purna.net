@@ -1,86 +1,222 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LegacyNetwork | BoxMining ✅</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    <!-- Arka Plan Animasyonu -->
-    <div class="area" >
-        <ul class="circles"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
-    </div >
-
-    <!-- Navigasyon -->
-    <nav>
-        <div class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
-        <div class="logo">BOX<span>MINING</span></div>
-        <div class="ip-box" onclick="copyIP()">89.47.113.47:25573 <i class="fas fa-copy"></i></div>
-    </nav>
-
-    <!-- Yan Menü (Sidebar) -->
-    <div id="sidebar" class="sidebar">
-        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
-        <div class="sidebar-content">
-            <h3>KATEGORİLER</h3>
-            <button onclick="showSection('home')"><i class="fas fa-home"></i> Anasayfa</button>
-            <button onclick="showSection('shop', 'vips')"><i class="fas fa-crown"></i> VIP Paketleri</button>
-            <button onclick="showSection('shop', 'kits')"><i class="fas fa-shield-alt"></i> Özel Kitler</button>
-            <button onclick="showSection('shop', 'swords')"><i class="fas fa-khanda"></i> Kılıçlar</button>
-            <button onclick="showSection('shop', 'crates')"><i class="fas fa-box-open"></i> Kasalar</button>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="LeaderOS" name="author"/>
+  <link href="..\favicon-q1925479d44.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Giriş Yap - Legacy Network
+  </title>
+  <meta content="Legacy Network, 20 eylül  2024’de kurulmuş, yeni bir isimle tekrar gelmiş oyuncularına keyifli vakit geçirmeyi amaçlayan gelişmiş bir Minecraft sunucusudur. Sunucumuzun popüler oyun modu BoxMining ile diğer oyuncularla kıyasıya savaşabilir, dostlarınızla vakit geçirip eğlencenin tadını çıkarabilirsiniz!" name="description">
+   <link href="..\index.html" rel="canonical">
+    <meta content="website" property="og:type">
+     <meta content="Giriş Yap - Legacy Network" property="og:title">
+      <meta content="Legacy Network, 10 may 2026’de kurulmuş, oyuncularına keyifli vakit geçirmeyi amaçlayan gelişmiş bir Minecraft sunucusudur. Sunucumuzun popüler oyun modu BoxMining ile diğer oyuncularla kıyasıya savaşabilir, dostlarınızla vakit geçirip eğlencenin tadını çıkarabilirsiniz!" property="og:description">
+       <meta content="legacynetwork.vercel.app" property="og:url"/>
+       <meta content="Legacy Network" property="og:site_name"/>
+       <!-- CSRF -->
+       <meta content="82ac2ca19f248555c14de6d4571a033566b2950fce1819c8ec16cd5e71d8d374" name="csrf-token"/>
+       <!-- EXTRAS -->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" rel="stylesheet"/>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
+       <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.4.0/dist/select2-bootstrap4.min.css" rel="stylesheet"/>
+       <link href="https://npmcdn.com/flickity@2/dist/flickity.css" rel="stylesheet"/>
+       <!-- THEMES -->
+       <link href="..\assets\gale\css\app.1756234788.css" rel="stylesheet" type="text/css"/>
+       <link href="..\assets\gale\css\bootstrap-grid.min.1756234788.css" rel="stylesheet" type="text/css"/>
+       <link href="..\assets\gale\css\plugins\ckeditor\content-styles.1756234788.css" rel="stylesheet" type="text/css"/>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.2/animations/scale.min.css" rel="stylesheet">
+        <!-- AlpineJS Plugins -->
+        <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs-collapse/3.14.8/cdn.min.js">
+        </script>
+        <script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-tooltip@1.x.x/dist/cdn.min.js">
+        </script>
+        <!-- AlpineJS Core -->
+        <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.8/cdn.min.js">
+        </script>
+        <!-- Fast Average Color Plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/fast-average-color@9.4.0/dist/index.browser.min.js">
+        </script>
+        <script src="..\assets\gale\js\theme.1756234788.js">
+        </script>
+        <!-- THEME SETTINGS -->
+        <style>
+         :root {
+        --color-indigo-50: 250 245 255;--color-indigo-100: 243 232 255;--color-indigo-200: 233 213 255;--color-indigo-300: 216 180 254;--color-indigo-400: 192 132 252;--color-indigo-500: 168 85 247;--color-indigo-600: 147 51 234;--color-indigo-700: 126 34 206;--color-indigo-800: 107 33 168;--color-indigo-900: 88 28 135;--color-voon-950: 8 8 8;
+          --color-voon-900: 10 10 10;
+          --color-voon-800: 14 14 14;
+          --color-voon-700: 18 18 18;
+          --color-voon-background: 18 18 18;
+          --color-voon-card: 14 14 14;
+          --color-neutral-900: 23 23 23;
+          --color-zinc-600: 82 82 91;        }
+        </style>
+        <!-- CUSTOM CSS -->
+        <style type="text/css">
+        </style>
+        <!-- ROLE CSS -->
+        <style type="text/css">
+        </style>
+       </link>
+      </meta>
+     </meta>
+    </meta>
+   </link>
+  </meta>
+ </head>
+ <body x-data="body">
+  <div id="app">
+   <main class="main" role="main" style="margin-bottom: 0 !important;">
+    <div class="flex flex-col lg:grid lg:grid-cols-2 min-h-screen bg-voon-bg">
+     <div class="lg:hidden flex justify-end p-10">
+      <a class="flex items-center gap-3 bg-indigo-600/20 btn-before rounded-xl py-3 px-5 text-sm font-medium text-white hover:bg-indigo-600/40" href="..\index.html">
+       <i class="fas fa-arrow-left">
+       </i>
+       Geri Dön
+      </a>
+     </div>
+     <div class="relative grow flex items-center justify-center flex-col overflow-hidden px-6 py-12">
+      <div class="w-full max-w-xl">
+       <div class="flex items-center gap-4">
+        <img alt="Rush Craft - Logo" class="hidden md:inline-block w-32" src="..\assets\core\images\uploads\e0e40f78d987239711d8621cead8395b-q1925479d44.png"/>
+        <div class="pl-5 py-2 border-l-2 border-indigo-900/75">
+         <h1 class="text-indigo-500 uppercase font-bold text-3xl">
+          Giriş Yap
+         </h1>
+         <p class="text-white/75">
+          Hesabına erişmek için giriş yap.
+         </p>
         </div>
+       </div>
+       <form action="/login/" class="mt-16" data-toggle="form-submit-with-loader" method="post">
+        <input name="csrf_token" type="hidden" value="82ac2ca19f248555c14de6d4571a033566b2950fce1819c8ec16cd5e71d8d374"/>
+        <input name="rememberMe" type="hidden" value="1">
+         <div class="">
+          <label class="auth-form-label" for="username">
+           Kullanıcı Adı
+          </label>
+          <input class="form-control" id="username" name="username" placeholder="Kullanıcı Adı" type="text" value=""/>
+         </div>
+         <div class="mt-6">
+          <div class="flex justify-between">
+           <label class="auth-form-label" for="password">
+            Şifre
+           </label>
+           <a class="font-medium text-sm text-white/75 text-center" href="..\forgot-password\index.html" tabindex="-1">
+            Şifremi Unuttum
+           </a>
+          </div>
+          <input class="form-control" id="password" name="password" placeholder="******" type="password"/>
+         </div>
+         <div class="mt-10 flex flex-col gap-12">
+          <div class="flex justify-between items-center w-full">
+           <div>
+            <a class="p-2 border-b-2 border-white/20 text-white/75 text-sm font-medium transition hover:text-white" href="..\register\index.html">
+             Kayıt Ol
+            </a>
+           </div>
+           <button class="relative group bg-indigo-500 flex items-center overflow-hidden duration-200 transition-colors hover:bg-indigo-600 py-4 px-6 transition font-medium text-white rounded-xl" name="login">
+            Giriş Yap
+            <i class="fas fa-arrow-right ml-6 -mr-10 transition-all group-hover:ml-4 group-hover:mr-0 duration-200">
+            </i>
+           </button>
+          </div>
+         </div>
+         <div class="absolute bottom-4 left-0 right-0 text-center text-white text-xs mt-6">
+          <a href="https://www.leaderos.com.tr" id="powered_by_leaderos" target="_blank">
+           Powered by
+           <strong>
+            LeaderOS
+           </strong>
+          </a>
+          <script>
+           var is_error;
+						var interval = setInterval(function() {
+							if (is_error) {
+								clearInterval(interval);
+								return false;
+							}
+							
+							var brand_el = document.getElementById("powered_by_leaderos");
+							var is_brand_visible = true;
+							
+							if (brand_el) {
+								var style = window.getComputedStyle(brand_el);
+								if (brand_el.offsetParent === null) {
+									is_brand_visible = false;
+								} else if (style.display === "none") {
+									is_brand_visible = false;
+								} else if (style.visibility === "hidden") {
+									is_brand_visible = false;
+								}
+							} else {
+								is_brand_visible = false;
+							}
+							
+							if (!is_brand_visible) {
+								is_error = true;
+								document.body.innerHTML = "<iframe src='https://www.leaderos.com.tr/powered_by_leaderos.php' style='border: 0; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%'></iframe>";
+							}
+						}, 1000);
+          </script>
+         </div>
+        </input>
+       </form>
+      </div>
+      <div class="absolute -bottom-6 left-0 shadow-voon-bottom w-28 h-6">
+      </div>
+     </div>
+     <div class="relative hidden lg:flex items-center justify-center z-10">
+      <div class="absolute overflow-hidden rounded-l-3xl bg-cover bg-center h-full w-full">
+       <div class="absolute top-0 left-0 w-full h-full bg-voon-900">
+       </div>
+      </div>
+      <div class="relative z-20">
+       <img alt="Rush Craft - Logo" class="w-1/2 mx-auto" src="..\assets\core\images\uploads\e0e40f78d987239711d8621cead8395b-q1925479d44.png"/>
+       <h2 class="font-bold text-3xl text-center text-indigo-100">
+        Rush Craft
+       </h2>
+      </div>
+      <div class="p-10 absolute top-0 right-0">
+       <a class="flex items-center gap-3 bg-indigo-600/20 btn-before rounded-xl py-3 px-5 text-sm font-medium text-white hover:bg-indigo-600/40" href="..\index.html">
+        <i class="fas fa-arrow-left">
+        </i>
+        Geri Dön
+       </a>
+      </div>
+     </div>
+     <div class="absolute -top-6 left-[calc(50%-8rem)] shadow-voon-bottom w-64 h-6">
+     </div>
     </div>
-
-    <div class="container">
-        
-        <!-- ANASAYFA BİLGİLERİ -->
-        <section id="home" class="page-section active">
-            <div class="hero">
-                <h1>Lagsız, Kesintisiz <br><span>BoxMining Deneyimi</span></h1>
-                <p>Türkiye'nin en gelişmiş plugin paketine sahip, aile ortamı tadında BoxMining sunucusu!</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="f-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>0 Gecikme (Lag)</h3>
-                    <p>Yüksek RAM ve optimize işlemcilerle oyun keyfiniz bölünmez.</p>
-                </div>
-                <div class="f-card">
-                    <i class="fas fa-user-shield"></i>
-                    <h3>7/24 Koruma</h3>
-                    <p>DDOS ve hile korumalarımızla emeğiniz güvende.</p>
-                </div>
-                <div class="f-card">
-                    <i class="fas fa-coins"></i>
-                    <h3>Adaletli Ekonomi</h3>
-                    <p>Çalışan kazanır! Emeklerinizin karşılığını alacağınız bir sistem.</p>
-                </div>
-            </div>
-
-            <!-- KAYIT FORMU -->
-            <div class="glass-card register-box">
-                <h2><i class="fas fa-user-plus"></i> Hızlı Kayıt</h2>
-                <input type="text" placeholder="Minecraft Kullanıcı Adı" id="reg-name">
-                <input type="password" placeholder="Şifre" id="reg-pass">
-                <button class="btn-glow">GİRİŞ YAP</button>
-            </div>
-        </section>
-
-        <!-- MARKET BÖLÜMÜ -->
-        <section id="shop" class="page-section">
-            <h2 id="cat-title" class="section-title">VIP PAKETLERİ</h2>
-            <div id="shop-items" class="shop-grid">
-                <!-- JavaScript burayı dolduracak -->
-            </div>
-        </section>
-
-    </div>
-
-    <script src="script.js"></script>
-</body>
+   </main>
+  </div>
+  <script charset="UTF-8" src="https://www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" type="text/javascript">
+  </script>
+  <script charset="UTF-8" type="text/javascript">
+   document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({"notice_banner_type": "simple", "consent_type": "express", "palette": "dark", "language": "tr", "page_load_consent_levels": ["strictly-necessary", "functionality", "tracking", "targeting"], "notice_banner_reject_button_hide": true, "preferences_center_close_button_hide": false, "page_refresh_confirmation_buttons": false, "website_name": "Rush Craft", "website_privacy_policy_url": "https://rushcraft.net/privacy"});
+        });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollup/2.4.1/jquery.scrollUp.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/16.1.0/lazyload.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/tr.min.js">
+  </script>
+  <script src="..\assets\gale\js\main.min.1756234788.js">
+  </script>
+ </body>
 </html>
+
